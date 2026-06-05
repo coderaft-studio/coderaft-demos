@@ -41,59 +41,67 @@ export default function CatalogPage() {
     "Landing Page": demos.filter(d => d.cat === "Landing Page").length,
     Dashboard: demos.filter(d => d.cat === "Dashboard").length,
   };
-  const langCounts = { Semua: demos.length, id: demos.filter(d => d.lang === "id").length, en: demos.filter(d => d.lang === "en").length };
+  const langCounts = {
+    Semua: demos.length,
+    id: demos.filter(d => d.lang === "id").length,
+    en: demos.filter(d => d.lang === "en").length,
+  };
 
   return (
     <div style={{ background: "#070711", minHeight: "100vh", color: "#f0f4ff" }}>
 
-      {/* ── Sticky Navbar ── */}
-      <header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(7,7,17,0.85)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(139,92,246,0.12)" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "56px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <div style={{ width: "28px", height: "28px", borderRadius: "8px", background: "linear-gradient(135deg,#8b5cf6,#ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: "13px", color: "#fff" }}>C</div>
-            <span style={{ fontWeight: 800, fontSize: "16px" }}>Coderaft<span style={{ color: "#a78bfa" }}>Demos</span></span>
-            <span style={{ fontSize: "11px", padding: "2px 10px", borderRadius: "100px", fontWeight: 700, background: "rgba(139,92,246,0.12)", color: "#a78bfa", border: "1px solid rgba(139,92,246,0.2)" }}>
+      {/* ── Navbar ── */}
+      <header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(7,7,17,0.88)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(139,92,246,0.12)" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6" style={{ height: "56px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ width: "26px", height: "26px", borderRadius: "7px", background: "linear-gradient(135deg,#8b5cf6,#ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: "12px", color: "#fff", flexShrink: 0 }}>C</div>
+            <span style={{ fontWeight: 800, fontSize: "15px" }}>Coderaft<span style={{ color: "#a78bfa" }}>Demos</span></span>
+            <span className="hidden sm:inline" style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "100px", fontWeight: 700, background: "rgba(139,92,246,0.12)", color: "#a78bfa", border: "1px solid rgba(139,92,246,0.2)" }}>
               {demos.length} demos
             </span>
           </div>
           <a href="https://coderaft-studio.vercel.app" target="_blank" rel="noopener noreferrer"
-            style={{ fontSize: "12px", fontWeight: 600, color: "rgba(240,244,255,0.4)", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px" }}>
-            ← Portfolio Utama
+            style={{ fontSize: "12px", fontWeight: 600, color: "rgba(240,244,255,0.4)", textDecoration: "none" }}>
+            <span className="hidden sm:inline">← Portfolio Utama</span>
+            <span className="sm:hidden">← Portfolio</span>
           </a>
         </div>
       </header>
 
-      {/* ── Hero section ── */}
-      <section style={{ position: "relative", padding: "80px 24px 60px", textAlign: "center", overflow: "hidden" }}>
-        {/* BG glows */}
-        <div style={{ position: "absolute", top: "0", left: "30%", width: "600px", height: "300px", background: "radial-gradient(ellipse,rgba(139,92,246,0.12),transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "20%", right: "20%", width: "400px", height: "300px", background: "radial-gradient(ellipse,rgba(236,72,153,0.08),transparent 70%)", pointerEvents: "none" }} />
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden text-center" style={{ padding: "48px 16px 40px" }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div style={{ position: "absolute", top: 0, left: "30%", width: "600px", height: "300px", background: "radial-gradient(ellipse,rgba(139,92,246,0.12),transparent 70%)" }} />
+          <div style={{ position: "absolute", top: "20%", right: "20%", width: "400px", height: "300px", background: "radial-gradient(ellipse,rgba(236,72,153,0.08),transparent 70%)" }} />
+        </div>
 
-        <div style={{ position: "relative" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 16px", borderRadius: "100px", marginBottom: "24px", background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.2)" }}>
-            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#8b5cf6", display: "inline-block" }} />
-            <span style={{ fontSize: "12px", fontWeight: 700, color: "#a78bfa", letterSpacing: "0.1em" }}>KATALOG PORTOFOLIO · CODERAFT STUDIO</span>
+        <div className="relative">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full text-xs font-bold"
+            style={{ background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", letterSpacing: "0.08em" }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-500 inline-block" />
+            KATALOG PORTOFOLIO · CODERAFT STUDIO
           </div>
 
-          <h1 style={{ fontSize: "clamp(2.5rem,6vw,4.5rem)", fontWeight: 900, letterSpacing: "-0.04em", margin: "0 0 16px", lineHeight: "1.0" }}>
-            <span style={{ color: "#f0f4ff" }}>Demo Website</span><br />
-            <span style={{ background: "linear-gradient(135deg,#8b5cf6,#ec4899,#f97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Profesional.</span>
+          <h1 className="font-black mb-4" style={{ fontSize: "clamp(2rem,7vw,4rem)", letterSpacing: "-0.04em", lineHeight: "1.05", color: "#f0f4ff" }}>
+            Demo Website<br />
+            <span style={{ color: "#a78bfa" }}>Profesional.</span>
           </h1>
-          <p style={{ fontSize: "17px", color: "rgba(240,244,255,0.45)", maxWidth: "520px", margin: "0 auto 40px", lineHeight: "1.6" }}>
-            {demos.length} demo live yang siap diperlihatkan ke klien. Landing page, dashboard, berbagai style dan bahasa.
+          <p className="mx-auto mb-8 text-sm sm:text-base" style={{ maxWidth: "480px", color: "rgba(240,244,255,0.45)", lineHeight: "1.6" }}>
+            Demo live yang siap diperlihatkan ke klien — landing page, dashboard, berbagai style dan bahasa.
           </p>
 
-          {/* Quick stats */}
-          <div style={{ display: "inline-flex", gap: "0", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(139,92,246,0.15)" }}>
+          {/* Stats — 2x2 on mobile, 1x4 on desktop */}
+          <div className="inline-grid grid-cols-2 sm:grid-cols-4 overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(139,92,246,0.15)" }}>
             {[
               { label: "Landing Pages", val: counts["Landing Page"], color: "#a78bfa" },
-              { label: "Dashboards", val: counts["Dashboard"], color: "#67e8f9" },
-              { label: "English", val: langCounts["en"], color: "#f9a8d4" },
-              { label: "Indonesia", val: langCounts["id"], color: "#86efac" },
+              { label: "Dashboards",    val: counts["Dashboard"],    color: "#67e8f9" },
+              { label: "English",       val: langCounts["en"],       color: "#f9a8d4" },
+              { label: "Indonesia",     val: langCounts["id"],       color: "#86efac" },
             ].map((s, i) => (
-              <div key={s.label} style={{ padding: "16px 24px", background: i % 2 === 0 ? "rgba(139,92,246,0.06)" : "rgba(56,189,248,0.04)", borderRight: i < 3 ? "1px solid rgba(139,92,246,0.1)" : "none", textAlign: "center" }}>
-                <div style={{ fontSize: "24px", fontWeight: 900, color: s.color, lineHeight: "1" }}>{s.val}</div>
-                <div style={{ fontSize: "11px", color: "rgba(240,244,255,0.35)", fontWeight: 600, marginTop: "4px", letterSpacing: "0.05em" }}>{s.label}</div>
+              <div key={s.label} className="text-center py-4 px-5"
+                style={{ background: i % 2 === 0 ? "rgba(139,92,246,0.06)" : "rgba(56,189,248,0.04)", borderRight: "1px solid rgba(139,92,246,0.1)" }}>
+                <div className="text-2xl font-black leading-none" style={{ color: s.color }}>{s.val}</div>
+                <div className="text-xs font-semibold mt-1" style={{ color: "rgba(240,244,255,0.35)", letterSpacing: "0.04em" }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -101,96 +109,90 @@ export default function CatalogPage() {
       </section>
 
       {/* ── Filters + Search ── */}
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 32px" }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-6">
         {/* Search */}
-        <div style={{ position: "relative", marginBottom: "16px" }}>
-          <span style={{ position: "absolute", left: "16px", top: "50%", transform: "translateY(-50%)", color: "rgba(240,244,255,0.3)", fontSize: "15px" }}>⌕</span>
+        <div className="relative mb-4">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm" style={{ color: "rgba(240,244,255,0.3)" }}>⌕</span>
           <input value={search} onChange={e => handleSearch(e.target.value)}
-            placeholder="Cari demo berdasarkan nama, kategori, atau tag..."
-            style={{ width: "100%", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(139,92,246,0.2)", borderRadius: "14px", padding: "14px 16px 14px 44px", fontSize: "14px", color: "#f0f4ff", outline: "none", boxSizing: "border-box", transition: "border-color 0.2s" }} />
+            placeholder="Cari demo..."
+            className="w-full rounded-xl pl-10 pr-10 py-3 text-sm outline-none"
+            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(139,92,246,0.2)", color: "#f0f4ff", boxSizing: "border-box" }} />
           {search && (
             <button onClick={() => handleSearch("")}
-              style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", color: "rgba(240,244,255,0.3)", background: "none", border: "none", cursor: "pointer", fontSize: "16px" }}>✕</button>
+              className="absolute right-4 top-1/2 -translate-y-1/2"
+              style={{ color: "rgba(240,244,255,0.3)", background: "none", border: "none", cursor: "pointer", fontSize: "16px" }}>✕</button>
           )}
         </div>
 
-        {/* Filter pills */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }}>
+        {/* Filter pills — wrap on mobile */}
+        <div className="flex flex-wrap gap-2 items-center">
           {/* Tipe */}
-          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-            {[
-              { f: "Semua",       icon: "⬡", label: `Semua (${counts.Semua})` },
-              { f: "Landing Page", icon: "◻", label: `Landing Page (${counts["Landing Page"]})` },
-              { f: "Dashboard",   icon: "◈", label: `Dashboard (${counts.Dashboard})` },
-            ].map(({ f, icon, label }) => (
-              <button key={f} onClick={() => handleFilter(f)}
-                style={{
-                  padding: "8px 16px", borderRadius: "100px", fontSize: "12px", fontWeight: 700, cursor: "pointer", border: "none",
-                  transition: "all 0.2s",
-                  background: filter === f ? "linear-gradient(135deg,#8b5cf6,#6d28d9)" : "rgba(255,255,255,0.05)",
-                  color: filter === f ? "#fff" : "rgba(240,244,255,0.5)",
-                  boxShadow: filter === f ? "0 0 20px rgba(139,92,246,0.3)" : "none",
-                }}>
-                {icon} {label}
-              </button>
-            ))}
-          </div>
+          {[
+            { f: "Semua",        label: `Semua (${counts.Semua})` },
+            { f: "Landing Page", label: `LP (${counts["Landing Page"]})` },
+            { f: "Dashboard",    label: `Dashboard (${counts.Dashboard})` },
+          ].map(({ f, label }) => (
+            <button key={f} onClick={() => handleFilter(f)}
+              className="px-3 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap"
+              style={{
+                border: "none", cursor: "pointer",
+                background: filter === f ? "linear-gradient(135deg,#8b5cf6,#6d28d9)" : "rgba(255,255,255,0.06)",
+                color: filter === f ? "#fff" : "rgba(240,244,255,0.5)",
+                boxShadow: filter === f ? "0 0 16px rgba(139,92,246,0.3)" : "none",
+              }}>
+              {label}
+            </button>
+          ))}
 
-          <div style={{ width: "1px", height: "24px", background: "rgba(255,255,255,0.08)" }} />
+          <div className="w-px h-5 hidden sm:block" style={{ background: "rgba(255,255,255,0.08)" }} />
 
           {/* Bahasa */}
-          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-            {[
-              { key: "Semua", icon: "🌐", label: `Semua` },
-              { key: "id",    icon: "🇮🇩", label: `Indonesia (${langCounts.id})` },
-              { key: "en",    icon: "🇺🇸", label: `English (${langCounts.en})` },
-            ].map(l => (
-              <button key={l.key} onClick={() => handleLang(l.key)}
-                style={{
-                  display: "flex", alignItems: "center", gap: "6px", padding: "8px 16px", borderRadius: "100px",
-                  fontSize: "12px", fontWeight: 700, cursor: "pointer", border: "none", transition: "all 0.2s",
-                  background: langFilter === l.key ? "linear-gradient(135deg,#ec4899,#be185d)" : "rgba(255,255,255,0.05)",
-                  color: langFilter === l.key ? "#fff" : "rgba(240,244,255,0.5)",
-                  boxShadow: langFilter === l.key ? "0 0 20px rgba(236,72,153,0.3)" : "none",
-                }}>
-                <span>{l.icon}</span>{l.label}
-              </button>
-            ))}
-          </div>
+          {[
+            { key: "Semua", icon: "🌐", label: "Semua" },
+            { key: "id",    icon: "🇮🇩", label: `ID (${langCounts.id})` },
+            { key: "en",    icon: "🇺🇸", label: `EN (${langCounts.en})` },
+          ].map(l => (
+            <button key={l.key} onClick={() => handleLang(l.key)}
+              className="flex items-center gap-1 px-3 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap"
+              style={{
+                border: "none", cursor: "pointer",
+                background: langFilter === l.key ? "linear-gradient(135deg,#ec4899,#be185d)" : "rgba(255,255,255,0.06)",
+                color: langFilter === l.key ? "#fff" : "rgba(240,244,255,0.5)",
+                boxShadow: langFilter === l.key ? "0 0 16px rgba(236,72,153,0.3)" : "none",
+              }}>
+              <span>{l.icon}</span>{l.label}
+            </button>
+          ))}
 
-          {/* Active filters indicator */}
           {(filter !== "Semua" || langFilter !== "Semua" || search) && (
             <button onClick={() => { handleSearch(""); handleFilter("Semua"); handleLang("Semua"); }}
-              style={{ marginLeft: "auto", padding: "8px 14px", borderRadius: "100px", fontSize: "11px", fontWeight: 700, cursor: "pointer", border: "1px solid rgba(239,68,68,0.3)", background: "rgba(239,68,68,0.08)", color: "#f87171" }}>
-              Reset filter ✕
+              className="ml-auto px-3 py-2 rounded-full text-xs font-bold"
+              style={{ border: "1px solid rgba(239,68,68,0.3)", background: "rgba(239,68,68,0.08)", color: "#f87171", cursor: "pointer" }}>
+              Reset ✕
             </button>
           )}
         </div>
 
-        {/* Result count */}
         {filtered.length !== demos.length && (
-          <p style={{ fontSize: "13px", color: "rgba(240,244,255,0.35)", marginTop: "16px" }}>
+          <p className="text-xs mt-3" style={{ color: "rgba(240,244,255,0.3)" }}>
             Menampilkan <span style={{ color: "#a78bfa", fontWeight: 700 }}>{filtered.length}</span> dari {demos.length} demo
           </p>
         )}
       </div>
 
-      {/* ── Cards Grid ── */}
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 80px" }}>
+      {/* ── Cards Grid — RESPONSIVE ── */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
         {paginated.length > 0 ? (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "20px", marginBottom: "48px" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-10">
             {paginated.map((d) => {
-              const cs = catStyle[d.cat] || catStyle["Landing Page"];
+              const cs = catStyle[d.cat];
               return (
                 <Link key={d.id} href={`/demo/${d.slug}`} target="_blank" rel="noopener noreferrer"
                   style={{ textDecoration: "none", display: "block" }}
                   className="group">
-                  <div style={{
-                    borderRadius: "20px", overflow: "hidden",
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                    transition: "all 0.25s",
-                  }}
+                  <div
+                    className="rounded-2xl overflow-hidden transition-all"
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
                     onMouseEnter={e => {
                       e.currentTarget.style.transform = "translateY(-4px)";
                       e.currentTarget.style.border = "1px solid rgba(139,92,246,0.3)";
@@ -202,58 +204,52 @@ export default function CatalogPage() {
                       e.currentTarget.style.boxShadow = "none";
                     }}>
 
-                    {/* Card visual header */}
-                    <div className={`bg-gradient-to-br ${d.color}`} style={{ height: "160px", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)" }} />
-
-                      {/* Emoji big */}
-                      <span style={{ fontSize: "56px", position: "relative", zIndex: 1, filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.4))", transition: "transform 0.3s" }}
-                        className="group-hover:scale-110">
+                    {/* Card header */}
+                    <div className={`bg-gradient-to-br ${d.color} relative flex items-center justify-center`}
+                      style={{ height: "150px" }}>
+                      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.22)" }} />
+                      <span className="group-hover:scale-110 transition-transform duration-300"
+                        style={{ fontSize: "52px", position: "relative", zIndex: 1, filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.4))" }}>
                         {d.emoji}
                       </span>
-
-                      {/* Top badges */}
-                      <div style={{ position: "absolute", top: "12px", left: "12px", display: "flex", gap: "6px", zIndex: 2 }}>
-                        <span style={{ fontSize: "16px" }} title={d.lang === "en" ? "English" : "Bahasa Indonesia"}>
-                          {d.lang === "en" ? "🇺🇸" : "🇮🇩"}
-                        </span>
+                      {/* Language badge */}
+                      <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 2, fontSize: "16px" }}>
+                        {d.lang === "en" ? "🇺🇸" : "🇮🇩"}
                       </div>
-                      <div style={{ position: "absolute", top: "12px", right: "12px", zIndex: 2 }}>
-                        <span style={{ fontSize: "11px", fontWeight: 700, padding: "4px 10px", borderRadius: "100px", background: cs.bg, color: cs.text, border: `1px solid ${cs.border}`, backdropFilter: "blur(8px)" }}>
+                      {/* Cat badge */}
+                      <div style={{ position: "absolute", top: "10px", right: "10px", zIndex: 2 }}>
+                        <span style={{ fontSize: "10px", fontWeight: 700, padding: "3px 9px", borderRadius: "100px", background: cs.bg, color: cs.text, border: `1px solid ${cs.border}`, backdropFilter: "blur(8px)" }}>
                           {d.cat}
                         </span>
                       </div>
-
-                      {/* Bottom glow line */}
-                      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40px", background: "linear-gradient(to top,rgba(7,7,17,0.8),transparent)" }} />
+                      {/* Bottom fade */}
+                      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "36px", background: "linear-gradient(to top,rgba(7,7,17,0.7),transparent)" }} />
                     </div>
 
                     {/* Card body */}
-                    <div style={{ padding: "20px" }}>
-                      <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", color: "#8b5cf6", marginBottom: "6px", textTransform: "uppercase" }}>
+                    <div style={{ padding: "16px 18px 18px" }}>
+                      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", color: "#8b5cf6", marginBottom: "4px", textTransform: "uppercase" }}>
                         {d.subcat}
                       </p>
-                      <h3 style={{ fontSize: "18px", fontWeight: 800, color: "#f0f4ff", margin: "0 0 8px", letterSpacing: "-0.02em", lineHeight: "1.2" }}>
+                      <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#f0f4ff", margin: "0 0 7px", letterSpacing: "-0.02em" }}>
                         {d.title}
                       </h3>
-                      <p style={{ fontSize: "13px", color: "rgba(240,244,255,0.4)", lineHeight: "1.6", margin: "0 0 16px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                      <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.4)", lineHeight: "1.6", margin: "0 0 12px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                         {d.desc}
                       </p>
-
-                      {/* Tags */}
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "16px" }}>
-                        {d.tags.map(t => (
-                          <span key={t} style={{ fontSize: "11px", fontWeight: 600, padding: "4px 10px", borderRadius: "100px", background: "rgba(255,255,255,0.04)", color: "rgba(240,244,255,0.4)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                      {/* Tags — hidden on small to save space */}
+                      <div className="hidden sm:flex flex-wrap gap-1 mb-3">
+                        {d.tags.slice(0, 3).map(t => (
+                          <span key={t} style={{ fontSize: "10px", fontWeight: 600, padding: "2px 8px", borderRadius: "100px", background: "rgba(255,255,255,0.04)", color: "rgba(240,244,255,0.35)", border: "1px solid rgba(255,255,255,0.06)" }}>
                             {t}
                           </span>
                         ))}
                       </div>
-
                       {/* CTA */}
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "14px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                        <span style={{ fontSize: "13px", fontWeight: 700, color: "#8b5cf6" }}>Buka Demo</span>
-                        <div style={{ width: "32px", height: "32px", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", fontSize: "14px", transition: "all 0.2s" }}
-                          className="group-hover:bg-violet-600 group-hover:border-violet-600 group-hover:text-white">
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "10px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#8b5cf6" }}>Buka Demo</span>
+                        <div style={{ width: "28px", height: "28px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", fontSize: "13px" }}
+                          className="group-hover:bg-violet-600 group-hover:border-violet-600 group-hover:text-white transition-all">
                           ↗
                         </div>
                       </div>
@@ -264,44 +260,47 @@ export default function CatalogPage() {
             })}
           </div>
         ) : (
-          <div style={{ textAlign: "center", padding: "96px 24px" }}>
-            <div style={{ fontSize: "48px", marginBottom: "16px" }}>🔍</div>
-            <p style={{ fontSize: "18px", fontWeight: 700, color: "rgba(240,244,255,0.5)", marginBottom: "8px" }}>Tidak ada demo yang cocok</p>
-            <p style={{ fontSize: "14px", color: "rgba(240,244,255,0.25)", marginBottom: "20px" }}>Coba kata kunci lain atau reset filter</p>
+          <div className="text-center py-24">
+            <div className="text-5xl mb-4">🔍</div>
+            <p className="text-lg font-semibold mb-2" style={{ color: "rgba(240,244,255,0.5)" }}>Tidak ada demo yang cocok</p>
             <button onClick={() => { handleSearch(""); handleFilter("Semua"); handleLang("Semua"); }}
-              style={{ padding: "10px 24px", borderRadius: "100px", background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.3)", color: "#a78bfa", fontWeight: 700, fontSize: "13px", cursor: "pointer" }}>
-              Reset semua filter
+              className="mt-4 px-5 py-2 rounded-full text-xs font-bold"
+              style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.3)", color: "#a78bfa", cursor: "pointer" }}>
+              Reset filter
             </button>
           </div>
         )}
 
-        {/* ── Pagination ── */}
+        {/* Pagination */}
         {totalPages > 1 && (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+          <div className="flex items-center justify-center gap-2 flex-wrap">
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-              style={{ padding: "10px 20px", borderRadius: "12px", fontSize: "13px", fontWeight: 700, cursor: page === 1 ? "not-allowed" : "pointer", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", color: page === 1 ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.6)", transition: "all 0.2s" }}>
+              className="px-4 py-2 rounded-xl text-sm font-bold transition-all"
+              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", color: page === 1 ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.6)", cursor: page === 1 ? "not-allowed" : "pointer" }}>
               ← Prev
             </button>
             {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
               <button key={n} onClick={() => setPage(n)}
+                className="w-9 h-9 rounded-xl text-sm font-bold transition-all"
                 style={{
-                  width: "40px", height: "40px", borderRadius: "12px", fontSize: "14px", fontWeight: 700, cursor: "pointer", border: "none", transition: "all 0.2s",
+                  border: "none", cursor: "pointer",
                   background: n === page ? "linear-gradient(135deg,#8b5cf6,#6d28d9)" : "rgba(255,255,255,0.04)",
                   color: n === page ? "#fff" : "rgba(240,244,255,0.4)",
-                  boxShadow: n === page ? "0 0 20px rgba(139,92,246,0.4)" : "none",
+                  boxShadow: n === page ? "0 0 16px rgba(139,92,246,0.4)" : "none",
                 }}>
                 {n}
               </button>
             ))}
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
-              style={{ padding: "10px 20px", borderRadius: "12px", fontSize: "13px", fontWeight: 700, cursor: page === totalPages ? "not-allowed" : "pointer", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", color: page === totalPages ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.6)", transition: "all 0.2s" }}>
+              className="px-4 py-2 rounded-xl text-sm font-bold transition-all"
+              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", color: page === totalPages ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.6)", cursor: page === totalPages ? "not-allowed" : "pointer" }}>
               Next →
             </button>
           </div>
         )}
 
         {/* Footer */}
-        <div style={{ textAlign: "center", marginTop: "64px", paddingTop: "32px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+        <div className="text-center mt-14 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
           <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.2)" }}>
             Dibuat dengan 💜 oleh{" "}
             <a href="https://coderaft-studio.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: "#a78bfa", textDecoration: "none" }}>Coderaft Studio</a>
