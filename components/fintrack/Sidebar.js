@@ -40,7 +40,8 @@ export default function Sidebar({ active, setActive }) {
               border: "1px solid rgba(16,185,129,0.3)",
               color: "#10b981",
               boxShadow: "0 0 20px rgba(16,185,129,0.1) inset",
-            } : { border: "1px solid transparent", color: "rgba(148,163,184,0.7)" }}>
+              cursor: "pointer",
+            } : { border: "1px solid transparent", color: "rgba(148,163,184,0.7)", cursor: "pointer" }}>
             {!col && active === m.id && (
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 rounded-r-full" style={{ background: "#10b981", boxShadow: "0 0 8px #10b981" }} />
             )}

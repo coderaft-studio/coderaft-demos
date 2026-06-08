@@ -34,8 +34,8 @@ export default function Sidebar({ active, setActive }) {
           <button key={m.id} onClick={() => setActive(m.id)}
             className={`w-full flex items-center rounded-xl transition-all text-left ${col ? "justify-center py-2 px-1" : "gap-3 px-3 py-2.5"}`}
             style={!col && active === m.id
-              ? { background: m.bg, border: `1px solid ${m.border}`, color: m.color }
-              : { border: "1px solid transparent", color: "#6b7280" }}>
+              ? { background: m.bg, border: `1px solid ${m.border}`, color: m.color, cursor: "pointer" }
+              : { border: "1px solid transparent", color: "#6b7280", cursor: "pointer" }}>
             <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0 transition-all"
               style={active === m.id
                 ? { background: m.bg, border: `1px solid ${m.border}` }
