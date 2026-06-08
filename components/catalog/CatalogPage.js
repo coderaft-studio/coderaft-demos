@@ -90,28 +90,35 @@ export default function CatalogPage() {
             Demo live yang siap diperlihatkan ke klien — landing page, dashboard, berbagai style dan bahasa.
           </p>
 
-          {/* Stats — 2x2 on mobile, 1x4 on desktop */}
-          <div className="inline-grid grid-cols-2 sm:grid-cols-4 overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(139,92,246,0.15)" }}>
+          {/* Stats — filter cards, 5 kolom */}
+          <div className="inline-grid grid-cols-3 sm:grid-cols-5 overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(139,92,246,0.15)" }}>
             {[
-              { label: "Landing Pages", val: counts["Landing Page"], color: "#a78bfa" },
-              { label: "Dashboards",    val: counts["Dashboard"],    color: "#67e8f9" },
-              { label: "English",       val: langCounts["en"],       color: "#f9a8d4" },
-              { label: "Indonesia",     val: langCounts["id"],       color: "#86efac" },
+              { label: "Semua Demo",    sub: "All Projects",   val: demos.length,           color: "#ffffff", rgb: "255,255,255",   isOn: filter === "Semua" && langFilter === "Semua", action: () => { handleFilter("Semua"); handleLang("Semua"); handleSearch(""); } },
+              { label: "Landing Page",  sub: "Web Promo",      val: counts["Landing Page"],  color: "#a78bfa", rgb: "139,92,246",   isOn: filter === "Landing Page",                    action: () => { filter === "Landing Page" ? handleFilter("Semua") : handleFilter("Landing Page"); handleLang("Semua"); } },
+              { label: "Dashboard",     sub: "Web App",        val: counts["Dashboard"],     color: "#67e8f9", rgb: "56,189,248",   isOn: filter === "Dashboard",                       action: () => { filter === "Dashboard" ? handleFilter("Semua") : handleFilter("Dashboard"); handleLang("Semua"); } },
+              { label: "English",       sub: "Bahasa Inggris", val: langCounts["en"],        color: "#f9a8d4", rgb: "236,72,153",   isOn: langFilter === "en",                          action: () => { langFilter === "en" ? handleLang("Semua") : handleLang("en"); handleFilter("Semua"); } },
+              { label: "Indonesia",     sub: "Bahasa ID",      val: langCounts["id"],        color: "#86efac", rgb: "134,239,172",  isOn: langFilter === "id",                          action: () => { langFilter === "id" ? handleLang("Semua") : handleLang("id"); handleFilter("Semua"); } },
             ].map((s, i) => (
-              <div key={s.label} className="text-center py-4 px-5"
-                style={{ background: i % 2 === 0 ? "rgba(139,92,246,0.06)" : "rgba(56,189,248,0.04)", borderRight: "1px solid rgba(139,92,246,0.1)" }}>
-                <div className="text-2xl font-black leading-none" style={{ color: s.color }}>{s.val}</div>
-                <div className="text-xs font-semibold mt-1" style={{ color: "rgba(240,244,255,0.35)", letterSpacing: "0.04em" }}>{s.label}</div>
-              </div>
+              <button key={s.label} onClick={s.action}
+                className="text-center py-4 px-3 sm:px-5 transition-all"
+                style={{
+                  background: s.isOn ? `rgba(${s.rgb},0.16)` : "rgba(255,255,255,0.03)",
+                  borderRight: i < 4 ? "1px solid rgba(139,92,246,0.1)" : "none",
+                  cursor: "pointer", border: "none",
+                  boxShadow: s.isOn ? `inset 0 -2px 0 ${s.color}` : "none",
+                }}>
+                <div className="text-2xl font-black leading-none mb-1" style={{ color: s.isOn ? s.color : "rgba(240,244,255,0.7)" }}>{s.val}</div>
+                <div className="text-xs font-bold leading-tight" style={{ color: s.isOn ? s.color : "rgba(240,244,255,0.4)", letterSpacing: "0.03em" }}>{s.label}</div>
+                <div className="text-xs mt-0.5 hidden sm:block" style={{ color: "rgba(240,244,255,0.2)", fontSize: "10px" }}>{s.sub}</div>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Filters + Search ── */}
+      {/* ── Search ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-6">
-        {/* Search */}
-        <div className="relative mb-4">
+        <div className="relative">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm" style={{ color: "rgba(240,244,255,0.3)" }}>⌕</span>
           <input value={search} onChange={e => handleSearch(e.target.value)}
             placeholder="Cari demo..."
@@ -123,61 +130,6 @@ export default function CatalogPage() {
               style={{ color: "rgba(240,244,255,0.3)", background: "none", border: "none", cursor: "pointer", fontSize: "16px" }}>✕</button>
           )}
         </div>
-
-        {/* Filter pills — wrap on mobile */}
-        <div className="flex flex-wrap gap-2 items-center">
-          {/* Tipe */}
-          {[
-            { f: "Semua",        label: `Semua (${counts.Semua})` },
-            { f: "Landing Page", label: `LP (${counts["Landing Page"]})` },
-            { f: "Dashboard",    label: `Dashboard (${counts.Dashboard})` },
-          ].map(({ f, label }) => (
-            <button key={f} onClick={() => handleFilter(f)}
-              className="px-3 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap"
-              style={{
-                border: "none", cursor: "pointer",
-                background: filter === f ? "linear-gradient(135deg,#8b5cf6,#6d28d9)" : "rgba(255,255,255,0.06)",
-                color: filter === f ? "#fff" : "rgba(240,244,255,0.5)",
-                boxShadow: filter === f ? "0 0 16px rgba(139,92,246,0.3)" : "none",
-              }}>
-              {label}
-            </button>
-          ))}
-
-          <div className="w-px h-5 hidden sm:block" style={{ background: "rgba(255,255,255,0.08)" }} />
-
-          {/* Bahasa */}
-          {[
-            { key: "Semua", icon: "🌐", label: "Semua" },
-            { key: "id",    icon: "🇮🇩", label: `ID (${langCounts.id})` },
-            { key: "en",    icon: "🇺🇸", label: `EN (${langCounts.en})` },
-          ].map(l => (
-            <button key={l.key} onClick={() => handleLang(l.key)}
-              className="flex items-center gap-1 px-3 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap"
-              style={{
-                border: "none", cursor: "pointer",
-                background: langFilter === l.key ? "linear-gradient(135deg,#ec4899,#be185d)" : "rgba(255,255,255,0.06)",
-                color: langFilter === l.key ? "#fff" : "rgba(240,244,255,0.5)",
-                boxShadow: langFilter === l.key ? "0 0 16px rgba(236,72,153,0.3)" : "none",
-              }}>
-              <span>{l.icon}</span>{l.label}
-            </button>
-          ))}
-
-          {(filter !== "Semua" || langFilter !== "Semua" || search) && (
-            <button onClick={() => { handleSearch(""); handleFilter("Semua"); handleLang("Semua"); }}
-              className="ml-auto px-3 py-2 rounded-full text-xs font-bold"
-              style={{ border: "1px solid rgba(239,68,68,0.3)", background: "rgba(239,68,68,0.08)", color: "#f87171", cursor: "pointer" }}>
-              Reset ✕
-            </button>
-          )}
-        </div>
-
-        {filtered.length !== demos.length && (
-          <p className="text-xs mt-3" style={{ color: "rgba(240,244,255,0.3)" }}>
-            Menampilkan <span style={{ color: "#a78bfa", fontWeight: 700 }}>{filtered.length}</span> dari {demos.length} demo
-          </p>
-        )}
       </div>
 
       {/* ── Cards Grid — RESPONSIVE ── */}
