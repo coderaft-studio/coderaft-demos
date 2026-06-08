@@ -84,11 +84,11 @@ export default function Sidebar({ active, setActive, onNew }) {
         {menus.map(m => (
           <button key={m.id} onClick={() => setActive(m.id)}
             className={`w-full flex items-center gap-2.5 py-2 rounded-lg text-left transition-all relative ${col ? "px-2 justify-center" : "px-3"}`}
-            style={active === m.id ? { background: "#eef2ff", color: "#4338ca" } : { color: "#64748b" }}>
+            style={active === m.id ? { background: "#eef2ff", color: "#4338ca", cursor: "pointer" } : { color: "#64748b", cursor: "pointer" }}>
             {active === m.id && !col && (
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-indigo-600 rounded-r-full" />
             )}
-            <span className={`flex-shrink-0 ${col ? "text-base" : "text-sm"}`}>{m.icon}</span>
+            <span style={{ width:"20px", textAlign:"center", flexShrink:0, fontSize: col ? "15px" : "14px" }}>{m.icon}</span>
             {!col && <span className="text-sm font-medium">{m.label}</span>}
           </button>
         ))}
@@ -100,8 +100,8 @@ export default function Sidebar({ active, setActive, onNew }) {
             <span className="text-xs font-semibold text-slate-300 uppercase tracking-widest">Settings</span>
           </div>
           {[{ icon: "⚙️", label: "Preferences" }, { icon: "🔔", label: "Notifications" }].map(item => (
-            <button key={item.label} className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-all">
-              <span className="text-sm">{item.icon}</span>
+            <button key={item.label} className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-all" style={{ cursor:"pointer" }}>
+              <span style={{ width:"20px", textAlign:"center", flexShrink:0, fontSize:"14px" }}>{item.icon}</span>
               <span className="text-sm">{item.label}</span>
             </button>
           ))}
