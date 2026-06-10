@@ -60,7 +60,7 @@ export default function CatalogPage() {
               {demos.length} demos
             </span>
           </div>
-          <a href="https://coderaft-studio.vercel.app" target="_blank" rel="noopener noreferrer"
+          <a href="https://coderaft.web.id" target="_blank" rel="noopener noreferrer"
             style={{ fontSize: "12px", fontWeight: 600, color: "rgba(240,244,255,0.4)", textDecoration: "none" }}>
             <span className="hidden sm:inline">← Portfolio Utama</span>
             <span className="sm:hidden">← Portfolio</span>
@@ -255,7 +255,7 @@ export default function CatalogPage() {
         <div className="text-center mt-14 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
           <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.2)" }}>
             Dibuat dengan 💜 oleh{" "}
-            <a href="https://coderaft-studio.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: "#a78bfa", textDecoration: "none" }}>Coderaft Studio</a>
+            <a href="https://coderaft.web.id" target="_blank" rel="noopener noreferrer" style={{ color: "#a78bfa", textDecoration: "none" }}>Coderaft Studio</a>
           </p>
         </div>
       </div>

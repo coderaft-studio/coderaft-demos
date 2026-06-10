@@ -109,7 +109,7 @@ export const demos = [
   {
     id: 12, slug: "bento", title: "Forma Studio", lang: "en",
     cat: "Landing Page", subcat: "Digital Agency — Bento Grid",
-    desc: "Modern digital agency landing page with bento grid layout, interactive cards, and minimalist typography inspired by Linear/Vercel.",
+    desc: "Modern digital agency landing page with bento grid layout, interactive cards, and minimalist typography inspired by Linear/Notion.",
     stack: ["Next.js", "Tailwind CSS"],
     color: "from-slate-100 to-white", emoji: "⬛",
     tags: ["Agency", "Design", "Bento Grid"],

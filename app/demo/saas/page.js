@@ -7,7 +7,7 @@ const features = [
   { icon: "🔒", title: "Security Enterprise", desc: "SSL, WAF, DDoS protection, dan compliance SOC2 built-in tanpa biaya tambahan." },
   { icon: "🌍", title: "Global CDN", desc: "Distribusi konten dari 200+ edge nodes di seluruh dunia untuk latensi minimal." },
   { icon: "🤖", title: "AI-Powered Scaling", desc: "Auto-scaling cerdas berdasarkan traffic pattern. Bayar hanya yang dipakai." },
-  { icon: "🔗", title: "100+ Integrasi", desc: "Connect dengan GitHub, Vercel, AWS, Stripe, Slack, dan ratusan tool favorit Anda." },
+  { icon: "🔗", title: "100+ Integrasi", desc: "Connect dengan GitHub, AWS, Stripe, Slack, Notion, dan ratusan tool favorit Anda." },
 ];
 
 const plans = [
