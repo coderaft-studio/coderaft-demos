@@ -52,10 +52,10 @@ export default function CatalogPage() {
 
       {/* ── Navbar ── */}
       <header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(7,7,17,0.88)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(139,92,246,0.12)" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6" style={{ height: "56px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6" style={{ height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div style={{ width: "26px", height: "26px", borderRadius: "7px", background: "linear-gradient(135deg,#8b5cf6,#ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: "12px", color: "#fff", flexShrink: 0 }}>C</div>
-            <span style={{ fontWeight: 800, fontSize: "15px" }}>Coderaft<span style={{ color: "#a78bfa" }}>Demos</span></span>
+            <div style={{ width: "30px", height: "30px", borderRadius: "8px", background: "linear-gradient(135deg,#8b5cf6,#ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: "13px", color: "#fff", flexShrink: 0 }}>C</div>
+            <span style={{ fontWeight: 800, fontSize: "16px" }}>Coderaft <span style={{ color: "#a78bfa" }}>Demos</span></span>
             <span className="hidden sm:inline" style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "100px", fontWeight: 700, background: "rgba(139,92,246,0.12)", color: "#a78bfa", border: "1px solid rgba(139,92,246,0.2)" }}>
               {demos.length} demos
             </span>
