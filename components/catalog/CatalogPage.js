@@ -139,7 +139,7 @@ export default function CatalogPage() {
             {paginated.map((d) => {
               const cs = catStyle[d.cat];
               return (
-                <Link key={d.id} href={`/demo/${d.slug}`} target="_blank" rel="noopener noreferrer"
+                <Link key={d.id} href={d.url || `/demo/${d.slug}`} target="_blank" rel="noopener noreferrer"
                   style={{ textDecoration: "none", display: "block" }}
                   className="group">
                   <div
