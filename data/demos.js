@@ -1,20 +1,20 @@
 export const demos = [
   // ── Halaman 1 ──
   {
-    id: 1, slug: "wedding", title: "Amoura Wedding", lang: "id",
-    cat: "Landing Page", subcat: "Wedding & Event Organizer",
-    desc: "Website wedding organizer premium dengan galeri, paket harga, booking form, dan testimoni pengantin.",
+    id: 1, slug: "edukasi", title: "BelajarKu", lang: "id",
+    cat: "Landing Page", subcat: "Edukasi & Learning Platform",
+    desc: "Platform belajar online Indonesia dengan video HD, kuis interaktif, sertifikat digital, mentor berpengalaman, dan komunitas 500K+ pelajar aktif.",
     stack: ["Next.js", "Tailwind CSS"],
-    color: "from-rose-400 to-pink-600", emoji: "💍",
-    tags: ["Wedding", "Event", "Booking"],
+    color: "from-teal-400 to-cyan-600", emoji: "📚",
+    tags: ["Edukasi", "Belajar", "Online", "App"],
   },
   {
-    id: 3, slug: "realestate", title: "Prime Property", lang: "id",
-    cat: "Landing Page", subcat: "Real Estate & Properti",
-    desc: "Website properti premium dengan listing rumah, filter pencarian, agen properti, dan mortgage calculator.",
+    id: 3, slug: "kuliner", title: "Bumbu Nusantara", lang: "id",
+    cat: "Landing Page", subcat: "Restoran & Kuliner Indonesia",
+    desc: "Website restoran masakan Indonesia otentik dengan menu unggulan 8 hidangan, galeri, testimoni pelanggan, dan reservasi meja online.",
     stack: ["Next.js", "Tailwind CSS"],
-    color: "from-slate-700 to-slate-900", emoji: "🏠",
-    tags: ["Properti", "Real Estate", "Listing"],
+    color: "from-amber-600 to-orange-800", emoji: "🍛",
+    tags: ["Restoran", "Kuliner", "Indonesia", "Food"],
   },
   {
     id: 7, slug: "gym", title: "IronForge Gym", lang: "id",
@@ -145,5 +145,21 @@ export const demos = [
     stack: ["Next.js", "Tailwind CSS"],
     color: "from-green-700 to-emerald-900", emoji: "🌿",
     tags: ["Herbal", "Wellness", "Organic"],
+  },
+  {
+    id: 19, slug: "wedding", title: "Amoura Wedding", lang: "id",
+    cat: "Landing Page", subcat: "Wedding & Event Organizer",
+    desc: "Website wedding organizer premium dengan galeri, paket harga, booking form, dan testimoni pengantin.",
+    stack: ["Next.js", "Tailwind CSS"],
+    color: "from-rose-400 to-pink-600", emoji: "💍",
+    tags: ["Wedding", "Event", "Booking"],
+  },
+  {
+    id: 20, slug: "realestate", title: "Prime Property", lang: "id",
+    cat: "Landing Page", subcat: "Real Estate & Properti",
+    desc: "Website properti premium dengan listing rumah, filter pencarian, agen properti, dan mortgage calculator.",
+    stack: ["Next.js", "Tailwind CSS"],
+    color: "from-slate-700 to-slate-900", emoji: "🏠",
+    tags: ["Properti", "Real Estate", "Listing"],
   },
 ];
