@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function CafeHero(){
   return(
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <Image src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80" alt="Kopiday Café" fill priority className="object-cover"/>
+      <Image src="/demo/coffee/hero.jpg" alt="Kopiday Café" fill priority className="object-cover"/>
       <div className="absolute inset-0" style={{background:"linear-gradient(to right,rgba(61,35,20,0.85) 45%,rgba(61,35,20,0.3))"}}/>
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
         <div className="max-w-xl">

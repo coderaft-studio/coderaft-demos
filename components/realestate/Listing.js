@@ -3,12 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 
 const properties = [
-  { id: 1, nama: "Villa Mewah Pondok Indah", lokasi: "Jakarta Selatan", harga: "8.500.000.000", tipe: "Rumah", kamar: 5, toilet: 4, luas: "600 m²", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&q=80", badge: "Unggulan" },
-  { id: 2, nama: "Apartemen Modern BSD", lokasi: "Tangerang Selatan", harga: "850.000.000", tipe: "Apartemen", kamar: 2, toilet: 2, luas: "65 m²", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&q=80", badge: "Baru" },
-  { id: 3, nama: "Rumah Townhouse Kemang", lokasi: "Jakarta Selatan", harga: "4.200.000.000", tipe: "Rumah", kamar: 4, toilet: 3, luas: "280 m²", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80", badge: null },
-  { id: 4, nama: "Ruko 3 Lantai Grogol", lokasi: "Jakarta Barat", harga: "3.800.000.000", tipe: "Ruko", kamar: 0, toilet: 4, luas: "200 m²", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80", badge: null },
-  { id: 5, nama: "Villa Puncak Weekend", lokasi: "Bogor", harga: "2.100.000.000", tipe: "Villa", kamar: 4, toilet: 3, luas: "400 m²", img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&q=80", badge: "Hot" },
-  { id: 6, nama: "Apartemen Studio Kelapa Gading", lokasi: "Jakarta Utara", harga: "450.000.000", tipe: "Apartemen", kamar: 1, toilet: 1, luas: "32 m²", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80", badge: null },
+  { id: 1, nama: "Villa Mewah Pondok Indah", lokasi: "Jakarta Selatan", harga: "8.500.000.000", tipe: "Rumah", kamar: 5, toilet: 4, luas: "600 m²", img: "/demo/realestate/prop1.jpg", badge: "Unggulan" },
+  { id: 2, nama: "Apartemen Modern BSD", lokasi: "Tangerang Selatan", harga: "850.000.000", tipe: "Apartemen", kamar: 2, toilet: 2, luas: "65 m²", img: "/demo/realestate/prop2.jpg", badge: "Baru" },
+  { id: 3, nama: "Rumah Townhouse Kemang", lokasi: "Jakarta Selatan", harga: "4.200.000.000", tipe: "Rumah", kamar: 4, toilet: 3, luas: "280 m²", img: "/demo/realestate/prop3.jpg", badge: null },
+  { id: 4, nama: "Ruko 3 Lantai Grogol", lokasi: "Jakarta Barat", harga: "3.800.000.000", tipe: "Ruko", kamar: 0, toilet: 4, luas: "200 m²", img: "/demo/realestate/prop4.jpg", badge: null },
+  { id: 5, nama: "Villa Puncak Weekend", lokasi: "Bogor", harga: "2.100.000.000", tipe: "Villa", kamar: 4, toilet: 3, luas: "400 m²", img: "/demo/realestate/prop5.jpg", badge: "Hot" },
+  { id: 6, nama: "Apartemen Studio Kelapa Gading", lokasi: "Jakarta Utara", harga: "450.000.000", tipe: "Apartemen", kamar: 1, toilet: 1, luas: "32 m²", img: "/demo/realestate/prop6.jpg", badge: null },
 ];
 
 const badgeColor = { Unggulan: "bg-amber-500 text-slate-950", Baru: "bg-emerald-500 text-white", Hot: "bg-red-500 text-white" };

@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function GymHero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <Image src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80" alt="Gym" fill priority className="object-cover" />
+      <Image src="/demo/gym/hero.jpg" alt="Gym" fill priority className="object-cover" />
       <div className="absolute inset-0" style={{background:"linear-gradient(to right,rgba(8,8,8,0.92) 50%,rgba(8,8,8,0.4))"}} />
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
         <div className="max-w-2xl">

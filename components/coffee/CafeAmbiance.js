@@ -1,10 +1,10 @@
 import Image from "next/image";
 const photos=[
-  {src:"https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80",alt:"Suasana kafe",span:"col-span-2 row-span-2"},
-  {src:"https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&q=80",alt:"Latte art",span:""},
-  {src:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80",alt:"Cold brew",span:""},
-  {src:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80",alt:"Barista",span:""},
-  {src:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80",alt:"Manual brew",span:"col-span-2"},
+  {src:"/demo/coffee/ambiance1.jpg",alt:"Suasana kafe",span:"col-span-2 row-span-2"},
+  {src:"/demo/coffee/ambiance2.jpg",alt:"Latte art",span:""},
+  {src:"/demo/coffee/ambiance3.jpg",alt:"Cold brew",span:""},
+  {src:"/demo/coffee/ambiance4.jpg",alt:"Barista",span:""},
+  {src:"/demo/coffee/hero.jpg",alt:"Manual brew",span:"col-span-2"},
 ];
 export default function CafeAmbiance(){
   return(
