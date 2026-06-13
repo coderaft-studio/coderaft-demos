@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center overflow-hidden">
-      <Image src="/demo/klinik/hero.jpg" alt="Klinik" fill priority className="object-cover" />
+      <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80" alt="Klinik" fill priority className="object-cover" />
       <div className="absolute inset-0 bg-teal-900/65" />
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
         <div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center overflow-hidden">
-      <Image src="/demo/realestate/hero.jpg" alt="Luxury Property" fill priority className="object-cover" />
+      <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80" alt="Luxury Property" fill priority className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 to-slate-950/40" />
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
         <p className="text-amber-400 tracking-widest uppercase text-sm font-semibold mb-4">Premium Real Estate</p>

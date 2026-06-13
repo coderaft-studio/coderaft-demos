@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const portofolio = [
-  { cat: "Wedding", src: "/demo/photo/port1.jpg", alt: "Wedding photography" },
-  { cat: "Portrait", src: "/demo/photo/port2.jpg", alt: "Portrait session" },
-  { cat: "Commercial", src: "/demo/photo/port3.jpg", alt: "Product photography" },
-  { cat: "Wedding", src: "/demo/photo/port4.jpg", alt: "Wedding moment" },
-  { cat: "Landscape", src: "/demo/photo/port5.jpg", alt: "Landscape" },
-  { cat: "Portrait", src: "/demo/photo/port6.jpg", alt: "Portrait" },
+  { cat: "Wedding", src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80", alt: "Wedding photography" },
+  { cat: "Portrait", src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80", alt: "Portrait session" },
+  { cat: "Commercial", src: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80", alt: "Product photography" },
+  { cat: "Wedding", src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80", alt: "Wedding moment" },
+  { cat: "Landscape", src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", alt: "Landscape" },
+  { cat: "Portrait", src: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80", alt: "Portrait" },
 ];
 
 const pakets = [
@@ -57,7 +57,7 @@ export default function PhotoPage() {
 
       {/* Hero — full screen dark cinematic */}
       <section className="relative h-screen flex items-end pb-24 overflow-hidden">
-        <Image src="/demo/photo/hero.jpg" alt="Photography" fill priority className="object-cover" />
+        <Image src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&q=80" alt="Photography" fill priority className="object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(10,9,6,0.95) 30%,rgba(10,9,6,0.3) 60%,rgba(10,9,6,0.1))" }} />
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
           <p className="text-xs font-bold tracking-widest mb-4" style={{ color: "rgba(253,248,243,0.4)", letterSpacing: "0.3em" }}>PHOTOGRAPHY & VISUAL STORYTELLING</p>

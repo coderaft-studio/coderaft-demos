@@ -1,11 +1,11 @@
 import Image from "next/image";
 const photos = [
-  { src: "/demo/wedding/hero.jpg", alt: "Pernikahan Garden", span: "col-span-2 row-span-2" },
-  { src: "/demo/wedding/galeri2.jpg", alt: "Dekorasi Pelaminan", span: "" },
-  { src: "/demo/wedding/galeri3.jpg", alt: "Meja Perjamuan", span: "" },
-  { src: "/demo/wedding/galeri4.jpg", alt: "Momen Bahagia", span: "" },
-  { src: "/demo/wedding/galeri5.jpg", alt: "Detail Bunga", span: "" },
-  { src: "/demo/wedding/galeri6.jpg", alt: "Resepsi Outdoor", span: "col-span-2" },
+  { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80", alt: "Pernikahan Garden", span: "col-span-2 row-span-2" },
+  { src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80", alt: "Dekorasi Pelaminan", span: "" },
+  { src: "https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=400&q=80", alt: "Meja Perjamuan", span: "" },
+  { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80", alt: "Momen Bahagia", span: "" },
+  { src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&q=80", alt: "Detail Bunga", span: "" },
+  { src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80", alt: "Resepsi Outdoor", span: "col-span-2" },
 ];
 export default function Galeri() {
   return (

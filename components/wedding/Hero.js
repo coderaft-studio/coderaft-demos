@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <Image src="/demo/wedding/hero.jpg" alt="Wedding" fill priority className="object-cover" />
+      <Image src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80" alt="Wedding" fill priority className="object-cover" />
       <div className="absolute inset-0 bg-black/45" />
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
         <p className="text-rose-300 tracking-widest uppercase text-sm font-semibold mb-4">Premium Wedding Organizer</p>
