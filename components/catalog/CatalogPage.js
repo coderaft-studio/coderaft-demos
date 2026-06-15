@@ -85,37 +85,12 @@ export default function CatalogPage() {
             KATALOG PORTOFOLIO · CODERAFT STUDIO
           </div>
 
-          <h1 className="font-black mb-2" style={{ fontSize: "clamp(1.75rem,5.5vw,3.25rem)", letterSpacing: "-0.04em", lineHeight: "1.08", color: "#f0f4ff" }}>
-            Demo Website <span style={{ color: "#a78bfa" }}>Profesional.</span>
+          <h1 className="font-black mb-2" style={{ fontSize: "clamp(1.75rem,5.5vw,3.25rem)", letterSpacing: "-0.04em", lineHeight: "1.15", color: "#f0f4ff" }}>
+            Demo Website<br/><span style={{ color: "#a78bfa" }}>Profesional.</span>
           </h1>
           <p className="mx-auto mb-5 text-sm" style={{ maxWidth: "400px", color: "rgba(240,244,255,0.4)", lineHeight: "1.6" }}>
             Seluruh demo dapat diakses secara gratis tanpa perlu registrasi.
           </p>
-
-          {/* CTA — hitung harga */}
-          <div className="flex justify-center mb-6">
-            <a href="https://coderaft.web.id/hitung" target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 rounded-2xl transition-all"
-              style={{
-                padding: "12px 20px",
-                background: "linear-gradient(135deg,rgba(139,92,246,0.18),rgba(236,72,153,0.12))",
-                border: "1px solid rgba(139,92,246,0.35)",
-                textDecoration: "none",
-                boxShadow: "0 0 28px rgba(139,92,246,0.18)",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 0 36px rgba(139,92,246,0.35)"; e.currentTarget.style.borderColor = "rgba(139,92,246,0.6)"; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 0 28px rgba(139,92,246,0.18)"; e.currentTarget.style.borderColor = "rgba(139,92,246,0.35)"; }}>
-              <div style={{ width: "32px", height: "32px", borderRadius: "10px", background: "linear-gradient(135deg,#8b5cf6,#ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px", flexShrink: 0 }}>
-                💡
-              </div>
-              <div style={{ textAlign: "left" }}>
-                <div style={{ fontSize: "12px", fontWeight: 800, color: "#f0f4ff", lineHeight: 1.2 }}>Tertarik bikin website seperti ini?</div>
-                <div style={{ fontSize: "11px", color: "rgba(240,244,255,0.45)", marginTop: "2px" }}>Hitung estimasi harga sekarang — gratis & instan</div>
-              </div>
-              <div style={{ fontSize: "14px", color: "#a78bfa", flexShrink: 0, transition: "transform 0.2s" }}
-                className="group-hover:translate-x-1">→</div>
-            </a>
-          </div>
 
           {/* Stats — filter cards, 6 kolom */}
           <div className="inline-grid grid-cols-3 sm:grid-cols-6 overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(139,92,246,0.15)" }}>
@@ -279,8 +254,35 @@ export default function CatalogPage() {
           </div>
         )}
 
+        {/* CTA — hitung harga */}
+        <div className="text-center mt-14 mb-8 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+          <h3 style={{ color:"#f0f4ff", fontWeight:900, fontSize:"clamp(1.2rem,3.5vw,1.75rem)", letterSpacing:"-0.03em", lineHeight:1.2, marginBottom:"10px" }}>
+            Suka dengan demo di atas?
+          </h3>
+          <p style={{ color:"rgba(240,244,255,0.4)", fontSize:"14px", lineHeight:1.7, maxWidth:"380px", margin:"0 auto 24px" }}>
+            Kami bisa buatkan website serupa untuk bisnis Anda — desain custom, harga transparan, pengerjaan cepat.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="https://fastwork.id/user/coderaft" target="_blank" rel="noopener noreferrer"
+              style={{ textDecoration:"none", display:"inline-flex", alignItems:"center", gap:"8px", background:"linear-gradient(135deg,#7c3aed,#ec4899)", color:"#fff", fontWeight:800, fontSize:"14px", padding:"13px 28px", borderRadius:"25px", boxShadow:"0 8px 32px rgba(124,58,237,0.4)" }}
+              onMouseEnter={e => e.currentTarget.style.boxShadow="0 12px 40px rgba(124,58,237,0.6)"}
+              onMouseLeave={e => e.currentTarget.style.boxShadow="0 8px 32px rgba(124,58,237,0.4)"}>
+              🚀 Pesan di Fastwork →
+            </a>
+            <a href="https://coderaft.web.id/hitung" target="_blank" rel="noopener noreferrer"
+              style={{ textDecoration:"none", display:"inline-flex", alignItems:"center", gap:"8px", background:"rgba(255,255,255,0.05)", color:"rgba(240,244,255,0.7)", fontWeight:700, fontSize:"14px", padding:"13px 28px", borderRadius:"25px", border:"1px solid rgba(255,255,255,0.1)" }}
+              onMouseEnter={e => { e.currentTarget.style.background="rgba(255,255,255,0.09)"; e.currentTarget.style.color="#fff"; }}
+              onMouseLeave={e => { e.currentTarget.style.background="rgba(255,255,255,0.05)"; e.currentTarget.style.color="rgba(240,244,255,0.7)"; }}>
+              🧮 Hitung Estimasi Harga
+            </a>
+          </div>
+          <p style={{ color:"rgba(240,244,255,0.2)", fontSize:"11px", marginTop:"16px" }}>
+            Gratis konsultasi · Respon &lt; 1 jam · Tanpa komitmen
+          </p>
+        </div>
+
         {/* Footer */}
-        <div className="text-center mt-14 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+        <div className="text-center mt-0 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
           <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.2)" }}>
             Dibuat dengan 💜 oleh{" "}
             <a href="https://coderaft.web.id" target="_blank" rel="noopener noreferrer" style={{ color: "#a78bfa", textDecoration: "none" }}>Coderaft Studio</a>
