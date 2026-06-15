@@ -11,22 +11,24 @@ const catStyle = {
 };
 
 export default function CatalogPage() {
-  const [search, setSearch]   = useState("");
-  const [filter, setFilter]   = useState("Semua");
-  const [langFilter, setLang] = useState("Semua");
-  const [page, setPage]       = useState(1);
+  const [search, setSearch]       = useState("");
+  const [filter, setFilter]       = useState("Semua");
+  const [langFilter, setLang]     = useState("Semua");
+  const [multiFilter, setMulti]   = useState(false);
+  const [page, setPage]           = useState(1);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
     return demos.filter((d) => {
       const matchCat    = filter === "Semua" || d.cat === filter;
       const matchLang   = langFilter === "Semua" || d.lang === langFilter;
+      const matchMulti  = !multiFilter || d.subcat.toLowerCase().includes("multi") || d.cat === "Dashboard";
       const matchSearch = !q || d.title.toLowerCase().includes(q) ||
         d.desc.toLowerCase().includes(q) || d.subcat.toLowerCase().includes(q) ||
         d.tags.some((t) => t.toLowerCase().includes(q));
-      return matchCat && matchLang && matchSearch;
+      return matchCat && matchLang && matchMulti && matchSearch;
     });
-  }, [search, filter, langFilter]);
+  }, [search, filter, langFilter, multiFilter]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paginated  = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
@@ -46,6 +48,7 @@ export default function CatalogPage() {
     id: demos.filter(d => d.lang === "id").length,
     en: demos.filter(d => d.lang === "en").length,
   };
+  const multiCount = demos.filter(d => d.subcat.toLowerCase().includes("multi") || d.cat === "Dashboard").length;
 
   return (
     <div style={{ background: "#070711", minHeight: "100vh", color: "#f0f4ff" }}>
@@ -69,41 +72,66 @@ export default function CatalogPage() {
       </header>
 
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden text-center" style={{ padding: "48px 16px 40px" }}>
+      <section className="relative overflow-hidden text-center" style={{ padding: "32px 16px 20px" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div style={{ position: "absolute", top: 0, left: "30%", width: "600px", height: "300px", background: "radial-gradient(ellipse,rgba(139,92,246,0.12),transparent 70%)" }} />
           <div style={{ position: "absolute", top: "20%", right: "20%", width: "400px", height: "300px", background: "radial-gradient(ellipse,rgba(236,72,153,0.08),transparent 70%)" }} />
         </div>
 
         <div className="relative">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full text-xs font-bold"
+          <div className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full text-xs font-bold"
             style={{ background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", letterSpacing: "0.08em" }}>
             <span className="w-1.5 h-1.5 rounded-full bg-violet-500 inline-block" />
             KATALOG PORTOFOLIO · CODERAFT STUDIO
           </div>
 
-          <h1 className="font-black mb-4" style={{ fontSize: "clamp(2rem,7vw,4rem)", letterSpacing: "-0.04em", lineHeight: "1.05", color: "#f0f4ff" }}>
-            Demo Website<br />
-            <span style={{ color: "#a78bfa" }}>Profesional.</span>
+          <h1 className="font-black mb-2" style={{ fontSize: "clamp(1.75rem,5.5vw,3.25rem)", letterSpacing: "-0.04em", lineHeight: "1.08", color: "#f0f4ff" }}>
+            Demo Website <span style={{ color: "#a78bfa" }}>Profesional.</span>
           </h1>
-          <p className="mx-auto mb-8 text-sm sm:text-base" style={{ maxWidth: "480px", color: "rgba(240,244,255,0.45)", lineHeight: "1.6" }}>
-            Demo live yang siap diperlihatkan ke klien — landing page, dashboard, berbagai style dan bahasa.
+          <p className="mx-auto mb-5 text-sm" style={{ maxWidth: "400px", color: "rgba(240,244,255,0.4)", lineHeight: "1.6" }}>
+            Seluruh demo dapat diakses secara gratis tanpa perlu registrasi.
           </p>
 
-          {/* Stats — filter cards, 5 kolom */}
-          <div className="inline-grid grid-cols-3 sm:grid-cols-5 overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(139,92,246,0.15)" }}>
+          {/* CTA — hitung harga */}
+          <div className="flex justify-center mb-6">
+            <a href="https://coderaft.web.id/hitung" target="_blank" rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 rounded-2xl transition-all"
+              style={{
+                padding: "12px 20px",
+                background: "linear-gradient(135deg,rgba(139,92,246,0.18),rgba(236,72,153,0.12))",
+                border: "1px solid rgba(139,92,246,0.35)",
+                textDecoration: "none",
+                boxShadow: "0 0 28px rgba(139,92,246,0.18)",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 0 36px rgba(139,92,246,0.35)"; e.currentTarget.style.borderColor = "rgba(139,92,246,0.6)"; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 0 28px rgba(139,92,246,0.18)"; e.currentTarget.style.borderColor = "rgba(139,92,246,0.35)"; }}>
+              <div style={{ width: "32px", height: "32px", borderRadius: "10px", background: "linear-gradient(135deg,#8b5cf6,#ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px", flexShrink: 0 }}>
+                💡
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: "12px", fontWeight: 800, color: "#f0f4ff", lineHeight: 1.2 }}>Tertarik bikin website seperti ini?</div>
+                <div style={{ fontSize: "11px", color: "rgba(240,244,255,0.45)", marginTop: "2px" }}>Hitung estimasi harga sekarang — gratis & instan</div>
+              </div>
+              <div style={{ fontSize: "14px", color: "#a78bfa", flexShrink: 0, transition: "transform 0.2s" }}
+                className="group-hover:translate-x-1">→</div>
+            </a>
+          </div>
+
+          {/* Stats — filter cards, 6 kolom */}
+          <div className="inline-grid grid-cols-3 sm:grid-cols-6 overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(139,92,246,0.15)" }}>
             {[
-              { label: "Semua Demo",    sub: "All Projects",   val: demos.length,           color: "#ffffff", rgb: "255,255,255",   isOn: filter === "Semua" && langFilter === "Semua", action: () => { handleFilter("Semua"); handleLang("Semua"); handleSearch(""); } },
-              { label: "Landing Page",  sub: "Web Promo",      val: counts["Landing Page"],  color: "#a78bfa", rgb: "139,92,246",   isOn: filter === "Landing Page",                    action: () => { filter === "Landing Page" ? handleFilter("Semua") : handleFilter("Landing Page"); handleLang("Semua"); } },
-              { label: "Dashboard",     sub: "Web App",        val: counts["Dashboard"],     color: "#67e8f9", rgb: "56,189,248",   isOn: filter === "Dashboard",                       action: () => { filter === "Dashboard" ? handleFilter("Semua") : handleFilter("Dashboard"); handleLang("Semua"); } },
-              { label: "English",       sub: "Bahasa Inggris", val: langCounts["en"],        color: "#f9a8d4", rgb: "236,72,153",   isOn: langFilter === "en",                          action: () => { langFilter === "en" ? handleLang("Semua") : handleLang("en"); handleFilter("Semua"); } },
-              { label: "Indonesia",     sub: "Bahasa ID",      val: langCounts["id"],        color: "#86efac", rgb: "134,239,172",  isOn: langFilter === "id",                          action: () => { langFilter === "id" ? handleLang("Semua") : handleLang("id"); handleFilter("Semua"); } },
+              { label: "Semua Demo",    sub: "All Projects",   val: demos.length,           color: "#ffffff", rgb: "255,255,255",   isOn: filter === "Semua" && langFilter === "Semua" && !multiFilter, action: () => { handleFilter("Semua"); handleLang("Semua"); handleSearch(""); setMulti(false); } },
+              { label: "Landing Page",  sub: "Web Promo",      val: counts["Landing Page"],  color: "#a78bfa", rgb: "139,92,246",   isOn: filter === "Landing Page",                                    action: () => { filter === "Landing Page" ? handleFilter("Semua") : handleFilter("Landing Page"); handleLang("Semua"); setMulti(false); } },
+              { label: "Dashboard",     sub: "Web App",        val: counts["Dashboard"],     color: "#67e8f9", rgb: "56,189,248",   isOn: filter === "Dashboard",                                       action: () => { filter === "Dashboard" ? handleFilter("Semua") : handleFilter("Dashboard"); handleLang("Semua"); setMulti(false); } },
+              { label: "English",       sub: "Bahasa Inggris", val: langCounts["en"],        color: "#f9a8d4", rgb: "236,72,153",   isOn: langFilter === "en",                                          action: () => { langFilter === "en" ? handleLang("Semua") : handleLang("en"); handleFilter("Semua"); setMulti(false); } },
+              { label: "Indonesia",     sub: "Bahasa ID",      val: langCounts["id"],        color: "#86efac", rgb: "134,239,172",  isOn: langFilter === "id",                                          action: () => { langFilter === "id" ? handleLang("Semua") : handleLang("id"); handleFilter("Semua"); setMulti(false); } },
+              { label: "Multi Page",    sub: "Banyak Halaman", val: multiCount,              color: "#fde68a", rgb: "253,230,138",  isOn: multiFilter,                                                  action: () => { setMulti(!multiFilter); handleFilter("Semua"); handleLang("Semua"); } },
             ].map((s, i) => (
               <button key={s.label} onClick={s.action}
                 className="text-center py-4 px-3 sm:px-5 transition-all"
                 style={{
                   background: s.isOn ? `rgba(${s.rgb},0.16)` : "rgba(255,255,255,0.03)",
-                  borderRight: i < 4 ? "1px solid rgba(139,92,246,0.1)" : "none",
+                  borderRight: i < 5 ? "1px solid rgba(139,92,246,0.1)" : "none",
                   cursor: "pointer", border: "none",
                   boxShadow: s.isOn ? `inset 0 -2px 0 ${s.color}` : "none",
                 }}>
@@ -215,7 +243,7 @@ export default function CatalogPage() {
           <div className="text-center py-24">
             <div className="text-5xl mb-4">🔍</div>
             <p className="text-lg font-semibold mb-2" style={{ color: "rgba(240,244,255,0.5)" }}>Tidak ada demo yang cocok</p>
-            <button onClick={() => { handleSearch(""); handleFilter("Semua"); handleLang("Semua"); }}
+            <button onClick={() => { handleSearch(""); handleFilter("Semua"); handleLang("Semua"); setMulti(false); }}
               className="mt-4 px-5 py-2 rounded-full text-xs font-bold"
               style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.3)", color: "#a78bfa", cursor: "pointer" }}>
               Reset filter
