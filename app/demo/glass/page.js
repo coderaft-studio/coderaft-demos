@@ -25,7 +25,7 @@ const gCard = {
 
 function Nav() {
   const [sc, setSc] = useState(false);
-  const [op, setOp] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const fn = () => setSc(window.scrollY > 60);
     window.addEventListener("scroll", fn);
@@ -36,23 +36,52 @@ function Nav() {
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
       background: sc ? "rgba(3,1,10,0.88)" : "transparent",
       backdropFilter: sc ? "blur(20px)" : "none",
-      /* border selalu ada, opacity warna yang berubah — tidak ada flash */
       borderBottom: `1px solid rgba(255,255,255,${sc ? 0.07 : 0})`,
       transition: "background 0.4s ease, border-color 0.4s ease",
     }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <div style={{ width: "28px", height: "28px", borderRadius: "8px", background: "linear-gradient(135deg,#818cf8,#38bdf8)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px" }}>◈</div>
           <span style={{ fontWeight: 900, fontSize: "18px", color: "#f0f4ff" }}>Aurora</span>
         </div>
-        <nav style={{ display: "flex", gap: "32px", fontSize: "14px", fontWeight: 500 }}>
+
+        {/* Desktop nav links */}
+        <nav className="hidden sm:flex" style={{ gap: "32px", fontSize: "14px", fontWeight: 500 }}>
           {["Features", "Pricing", "Security"].map(l => <a key={l} href={`#${l.toLowerCase()}`} style={{ color: "rgba(240,244,255,0.5)", textDecoration: "none" }}>{l}</a>)}
         </nav>
-        <div style={{ display: "flex", gap: "12px" }}>
+
+        {/* Desktop CTA buttons */}
+        <div className="hidden sm:flex" style={{ gap: "12px" }}>
           <a href="#pricing" style={{ padding: "8px 20px", borderRadius: "100px", fontSize: "13px", fontWeight: 700, color: "rgba(240,244,255,0.7)", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>Login</a>
           <a href="#pricing" style={{ padding: "8px 20px", borderRadius: "100px", fontSize: "13px", fontWeight: 700, color: "#0a0a14", textDecoration: "none", background: "linear-gradient(135deg,#818cf8,#38bdf8)" }}>Get Started</a>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="sm:hidden"
+          onClick={() => setMenuOpen(v => !v)}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", color: "#f0f4ff", fontSize: "22px", lineHeight: 1 }}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </div>
+
+      {/* Mobile dropdown menu */}
+      {menuOpen && (
+        <div className="sm:hidden" style={{ background: "rgba(3,1,10,0.97)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.07)", padding: "16px 24px 20px" }}>
+          <nav style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "20px" }}>
+            {["Features", "Pricing", "Security"].map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)} style={{ color: "rgba(240,244,255,0.6)", textDecoration: "none", fontSize: "15px", fontWeight: 600 }}>{l}</a>
+            ))}
+          </nav>
+          <div style={{ display: "flex", gap: "12px" }}>
+            <a href="#pricing" onClick={() => setMenuOpen(false)} style={{ flex: 1, textAlign: "center", padding: "10px 16px", borderRadius: "100px", fontSize: "13px", fontWeight: 700, color: "rgba(240,244,255,0.7)", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>Login</a>
+            <a href="#pricing" onClick={() => setMenuOpen(false)} style={{ flex: 1, textAlign: "center", padding: "10px 16px", borderRadius: "100px", fontSize: "13px", fontWeight: 700, color: "#0a0a14", textDecoration: "none", background: "linear-gradient(135deg,#818cf8,#38bdf8)" }}>Get Started</a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
@@ -62,7 +91,7 @@ export default function GlassPage() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div style={{ background: "#03010a", minHeight: "100vh", position: "relative", overflow: "hidden" }}>
+    <div style={{ background: "#03010a", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
       {/* Global background glows */}
       <div style={{ position: "fixed", top: "10%", left: "15%", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle,rgba(99,102,241,0.15),transparent 70%)", pointerEvents: "none" }} />
       <div style={{ position: "fixed", top: "20%", right: "10%", width: "400px", height: "400px", borderRadius: "50%", background: "radial-gradient(circle,rgba(56,189,248,0.1),transparent 70%)", pointerEvents: "none" }} />
@@ -77,31 +106,34 @@ export default function GlassPage() {
           <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(240,244,255,0.6)" }}>10,000+ users trust Aurora</span>
         </div>
 
-        <h1 style={{ fontSize: "clamp(3rem,8vw,6rem)", fontWeight: 900, lineHeight: "1.0", letterSpacing: "-0.04em", margin: "0 0 24px", background: "linear-gradient(135deg,#f0f4ff 0%,#818cf8 50%,#38bdf8 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        <h1 style={{ fontSize: "clamp(2.5rem,8vw,6rem)", fontWeight: 900, lineHeight: "1.0", letterSpacing: "-0.04em", margin: "0 0 24px", background: "linear-gradient(135deg,#f0f4ff 0%,#818cf8 50%,#38bdf8 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           Your Money,<br />Amplified.
         </h1>
-        <p style={{ fontSize: "20px", lineHeight: "1.6", color: "rgba(240,244,255,0.45)", margin: "0 auto 40px", maxWidth: "560px" }}>
+        <p style={{ fontSize: "clamp(15px,4vw,20px)", lineHeight: "1.6", color: "rgba(240,244,255,0.45)", margin: "0 auto 40px", maxWidth: "560px" }}>
           The smart financial platform that helps you save more, invest smarter, and live with greater peace of mind.
         </p>
-        <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginBottom: "64px" }}>
-          <a href="#pricing" style={{ padding: "16px 36px", borderRadius: "100px", fontWeight: 900, fontSize: "15px", textDecoration: "none", color: "#0a0a14", background: "linear-gradient(135deg,#818cf8,#38bdf8)", boxShadow: "0 0 40px rgba(129,140,248,0.4)" }}>
+
+        {/* Hero CTA buttons: stack on mobile */}
+        <div className="flex flex-col sm:flex-row" style={{ gap: "16px", justifyContent: "center", alignItems: "center", marginBottom: "64px" }}>
+          <a href="#pricing" style={{ padding: "16px 36px", borderRadius: "100px", fontWeight: 900, fontSize: "15px", textDecoration: "none", color: "#0a0a14", background: "linear-gradient(135deg,#818cf8,#38bdf8)", boxShadow: "0 0 40px rgba(129,140,248,0.4)", width: "100%", maxWidth: "280px", textAlign: "center", boxSizing: "border-box" }}>
             Get Started Free ↗
           </a>
-          <a href="#features" style={{ padding: "16px 36px", borderRadius: "100px", fontWeight: 700, fontSize: "15px", textDecoration: "none", color: "rgba(240,244,255,0.7)", ...gCard }}>
+          <a href="#features" style={{ padding: "16px 36px", borderRadius: "100px", fontWeight: 700, fontSize: "15px", textDecoration: "none", color: "rgba(240,244,255,0.7)", ...gCard, width: "100%", maxWidth: "280px", textAlign: "center", boxSizing: "border-box" }}>
             Lihat Demo
           </a>
         </div>
 
         {/* Glass hero card */}
         <div style={{ ...gCard, padding: "32px", maxWidth: "700px", margin: "0 auto", textAlign: "left" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
             <div>
               <div style={{ fontSize: "12px", color: "rgba(240,244,255,0.3)", fontWeight: 600, letterSpacing: "0.1em", marginBottom: "4px" }}>TOTAL BALANCE</div>
-              <div style={{ fontSize: "36px", fontWeight: 900, color: "#f0f4ff", letterSpacing: "-0.02em" }}>Rp 248.750.000</div>
+              <div style={{ fontSize: "clamp(22px,5vw,36px)", fontWeight: 900, color: "#f0f4ff", letterSpacing: "-0.02em" }}>Rp 248.750.000</div>
             </div>
             <div style={{ padding: "8px 16px", borderRadius: "100px", background: "rgba(74,222,128,0.15)", color: "#4ade80", fontWeight: 700, fontSize: "14px" }}>↑ +12.4%</div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
+          {/* Balance stats: 1 col on mobile, 3 cols on sm+ */}
+          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "12px" }}>
             {[{ l: "Invested", v: "Rp 120jt", c: "#818cf8" }, { l: "Savings", v: "Rp 85jt", c: "#38bdf8" }, { l: "Spending", v: "Rp 43jt", c: "#f472b6" }].map(s => (
               <div key={s.l} style={{ background: "rgba(255,255,255,0.03)", borderRadius: "16px", padding: "16px" }}>
                 <div style={{ fontSize: "11px", color: "rgba(240,244,255,0.3)", fontWeight: 600, letterSpacing: "0.1em", marginBottom: "8px" }}>{s.l}</div>
@@ -120,7 +152,8 @@ export default function GlassPage() {
             Everything you need to<br /><span style={{ background: "linear-gradient(135deg,#818cf8,#38bdf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>grow your wealth.</span>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
+        {/* Features grid: 1 col mobile, 2 col sm, 3 col lg */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "16px" }}>
           {features.map((f, i) => (
             <div key={f.title} style={{ ...gCard, padding: "28px", cursor: "default", transition: "transform 0.2s", position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)" }} />
@@ -134,10 +167,11 @@ export default function GlassPage() {
 
       {/* ── STATS ── */}
       <section style={{ padding: "64px 24px", maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ ...gCard, padding: "48px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "32px', textAlign: 'center" }}>
+        {/* Stats grid: 2 col mobile, 4 col sm+ */}
+        <div className="grid grid-cols-2 sm:grid-cols-4" style={{ ...gCard, padding: "48px", gap: "32px" }}>
           {[{ num: "Rp 2T+", label: "Total Transaksi", glow: "#818cf8" }, { num: "10rb+", label: "Pengguna Aktif", glow: "#38bdf8" }, { num: "99.9%", label: "Uptime", glow: "#4ade80" }, { num: "150+", label: "Negara", glow: "#f472b6" }].map(s => (
             <div key={s.label} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "36px", fontWeight: 900, color: s.glow, textShadow: `0 0 30px ${s.glow}80`, letterSpacing: "-0.02em" }}>{s.num}</div>
+              <div style={{ fontSize: "clamp(24px,5vw,36px)", fontWeight: 900, color: s.glow, textShadow: `0 0 30px ${s.glow}80`, letterSpacing: "-0.02em" }}>{s.num}</div>
               <div style={{ fontSize: "13px", color: "rgba(240,244,255,0.4)", fontWeight: 600, marginTop: "8px", letterSpacing: "0.05em" }}>{s.label}</div>
             </div>
           ))}
@@ -150,7 +184,8 @@ export default function GlassPage() {
           <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.2em", color: "#818cf8", marginBottom: "12px" }}>PRICING</p>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", fontWeight: 900, letterSpacing: "-0.03em", margin: 0, color: "#f0f4ff" }}>Start free, scale as you grow.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px" }}>
+        {/* Pricing grid: 1 col mobile, 3 col md+ */}
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "16px" }}>
           {plans.map((p, i) => (
             <div key={p.name} style={{ ...gCard, padding: "32px", position: "relative", overflow: "hidden", ...(i === 1 ? { border: "1px solid rgba(129,140,248,0.4)", boxShadow: "0 0 40px rgba(129,140,248,0.1)" } : {}) }}>
               {i === 1 && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg,#818cf8,#38bdf8)" }} />}
@@ -175,11 +210,11 @@ export default function GlassPage() {
 
       {/* ── CTA ── */}
       <section id="cta" style={{ padding: "80px 24px", textAlign: "center", maxWidth: "700px", margin: "0 auto" }}>
-        <div style={{ ...gCard, padding: "56px 40px", position: "relative", overflow: "hidden" }}>
+        <div style={{ ...gCard, padding: "56px 24px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle,rgba(129,140,248,0.15),transparent 70%)", pointerEvents: "none" }} />
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg,transparent,rgba(129,140,248,0.3),transparent)" }} />
           <div style={{ position: "relative" }}>
-            <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", fontWeight: 900, color: "#f0f4ff", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontSize: "clamp(1.8rem,5vw,3rem)", fontWeight: 900, color: "#f0f4ff", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
               Ready to take control<br /><span style={{ background: "linear-gradient(135deg,#818cf8,#38bdf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>of your finances?</span>
             </h2>
             <p style={{ fontSize: "16px", color: "rgba(240,244,255,0.4)", margin: "0 0 36px" }}>Join 10,000+ users who have already transformed the way they manage their money.</p>
@@ -189,7 +224,8 @@ export default function GlassPage() {
                 <p style={{ color: "#4ade80", fontWeight: 700 }}>Welcome to Aurora! Check your email.</p>
               </div>
             ) : (
-              <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "flex", gap: "12px", maxWidth: "420px", margin: "0 auto" }}>
+              /* CTA form: stack on mobile, row on sm+ */
+              <form onSubmit={e => { e.preventDefault(); setSent(true); }} className="flex flex-col sm:flex-row" style={{ gap: "12px", maxWidth: "420px", margin: "0 auto" }}>
                 <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Your work email"
                   style={{ flex: 1, padding: "14px 20px", borderRadius: "100px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#f0f4ff", fontSize: "14px", outline: "none" }} />
                 <button type="submit" style={{ padding: "14px 28px", borderRadius: "100px", fontWeight: 900, fontSize: "14px", color: "#0a0a14", background: "linear-gradient(135deg,#818cf8,#38bdf8)", border: "none", cursor: "pointer", whiteSpace: "nowrap" }}>
@@ -203,12 +239,14 @@ export default function GlassPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "32px 24px", maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ width: "24px", height: "24px", borderRadius: "6px", background: "linear-gradient(135deg,#818cf8,#38bdf8)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px" }}>◈</div>
-          <span style={{ fontWeight: 900, color: "#f0f4ff" }}>Aurora</span>
+      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "32px 24px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div className="flex flex-col sm:flex-row" style={{ justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ width: "24px", height: "24px", borderRadius: "6px", background: "linear-gradient(135deg,#818cf8,#38bdf8)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px" }}>◈</div>
+            <span style={{ fontWeight: 900, color: "#f0f4ff" }}>Aurora</span>
+          </div>
+          <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.2)", textAlign: "center", margin: 0 }}>© 2024 Aurora Financial Technologies. All rights reserved.</p>
         </div>
-        <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.2)" }}>© 2024 Aurora Financial Technologies. All rights reserved.</p>
       </footer>
     </div>
   );

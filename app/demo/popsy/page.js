@@ -51,19 +51,19 @@ export default function PopsyPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ background: YLW, minHeight: "90vh", display: "flex", alignItems: "center" }}>
+      <section className="relative overflow-hidden" style={{ background: YLW, minHeight: "90vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         {/* Memphis shapes */}
-        <Shape type="circle" color={RED} style={{ width: "180px", height: "180px", top: "5%", right: "8%", opacity: 0.9 }} />
-        <Shape type="circle" color={BLUE} style={{ width: "100px", height: "100px", top: "60%", right: "15%", opacity: 0.8 }} />
-        <Shape type="square" color={BLK} style={{ width: "60px", height: "60px", top: "15%", left: "5%", rotate: "15deg" }} />
-        <Shape type="circle" color="#00C853" style={{ width: "140px", height: "140px", bottom: "10%", left: "3%", opacity: 0.7 }} />
-        <Shape type="square" color={RED} style={{ width: "40px", height: "40px", bottom: "30%", right: "5%", rotate: "30deg" }} />
-        <div style={{ position: "absolute", top: "40%", left: "20%", width: "50px", height: "50px", border: `6px solid ${BLK}`, borderRadius: "50%" }} />
-        <div style={{ position: "absolute", top: "20%", right: "30%", fontSize: "40px" }}>★</div>
-        <div style={{ position: "absolute", bottom: "20%", left: "35%", fontSize: "32px" }}>●</div>
+        <Shape type="circle" color={RED} style={{ width: "180px", height: "180px", top: "5%", right: "8%", opacity: 0.9, zIndex: 0 }} />
+        <Shape type="circle" color={BLUE} style={{ width: "100px", height: "100px", top: "60%", right: "15%", opacity: 0.8, zIndex: 0 }} />
+        <Shape type="square" color={BLK} style={{ width: "60px", height: "60px", top: "15%", left: "5%", rotate: "15deg", zIndex: 0 }} />
+        <Shape type="circle" color="#00C853" style={{ width: "140px", height: "140px", bottom: "10%", left: "3%", opacity: 0.7, zIndex: 0 }} />
+        <Shape type="square" color={RED} style={{ width: "40px", height: "40px", bottom: "30%", right: "5%", rotate: "30deg", zIndex: 0 }} />
+        <div style={{ position: "absolute", top: "40%", left: "20%", width: "50px", height: "50px", border: `6px solid ${BLK}`, borderRadius: "50%", zIndex: 1 }} />
+        <div style={{ position: "absolute", top: "20%", right: "30%", fontSize: "40px", zIndex: 1 }}>★</div>
+        <div style={{ position: "absolute", bottom: "20%", left: "35%", fontSize: "32px", zIndex: 1 }}>●</div>
 
         {/* Zigzag top border */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "24px", background: `repeating-linear-gradient(135deg, ${BLK} 0, ${BLK} 12px, ${YLW} 12px, ${YLW} 24px)` }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "24px", background: `repeating-linear-gradient(135deg, ${BLK} 0, ${BLK} 12px, ${YLW} 12px, ${YLW} 24px)`, zIndex: 2 }} />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full py-20">
           <div className="grid lg:grid-cols-2 gap-8 items-center">

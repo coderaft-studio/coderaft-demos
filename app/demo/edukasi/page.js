@@ -100,5 +100,9 @@ function Navbar() {
 
 export default function EdukasiPage() {
   useAnimateOnScroll(".ed-wow", "ed-animated");
-  return <Navbar/>;
+  return (
+    <div style={{ overflowX:"hidden" }}>
+      <Navbar/>
+    </div>
+  );
 }

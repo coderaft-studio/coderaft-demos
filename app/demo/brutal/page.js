@@ -8,19 +8,129 @@ const works = [
   { no: "004", title: "IDENTITY SISTEM LENGKAP", client: "F&B Chain", year: "2025", cat: "Branding" },
 ];
 
+const responsiveStyles = `
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-left-col {
+    border-bottom: 3px solid #0a0a0a;
+    padding-bottom: 32px;
+  }
+  .hero-right-col {
+    padding-top: 32px;
+  }
+  @media (min-width: 768px) {
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+    .hero-left-col {
+      border-bottom: none;
+      padding-bottom: 0;
+      border-right: 3px solid #0a0a0a;
+      padding-right: 40px;
+    }
+    .hero-right-col {
+      padding-top: 0;
+      padding-left: 40px;
+    }
+  }
+  .svc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .svc-item {
+    padding: 32px 24px;
+    border-bottom: 3px solid #0a0a0a;
+  }
+  @media (min-width: 768px) {
+    .svc-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .svc-item-even {
+      border-right: 3px solid #0a0a0a;
+    }
+    .svc-item-last-row {
+      border-bottom: none;
+    }
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 3px solid #0a0a0a;
+  }
+  .contact-left {
+    padding: 48px 0;
+    border-bottom: 3px solid #0a0a0a;
+  }
+  .contact-right {
+    padding: 48px 0;
+  }
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .contact-left {
+      border-bottom: none;
+      border-right: 3px solid #0a0a0a;
+      padding-right: 40px;
+    }
+    .contact-right {
+      padding-left: 40px;
+    }
+  }
+`;
+
 function Nav() {
   const [sc, setSc] = useState(false);
-  const [op, setOp] = useState(false);
-  useEffect(() => { const fn = () => setSc(window.scrollY > 40); window.addEventListener("scroll", fn); return () => window.removeEventListener("scroll", fn); }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const fn = () => setSc(window.scrollY > 40);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
   return (
     <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, borderBottom: sc ? "3px solid #0a0a0a" : "none", background: sc ? "#f5f0e8" : "transparent" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ fontWeight: 900, fontSize: "20px", letterSpacing: "0.05em", fontFamily: "serif" }}>RAW</div>
-        <nav style={{ display: "flex", gap: "32px", fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>
-          {["Work", "Services", "Contact"].map(l => <a key={l} href={`#${l.toLowerCase()}`} style={{ color: "rgba(10,10,10,0.5)", textDecoration: "none" }}>{l}</a>)}
+
+        {/* Desktop nav links — hidden on mobile */}
+        <nav className="hidden sm:flex" style={{ gap: "32px", fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+          {["Work", "Services", "Contact"].map(l => (
+            <a key={l} href={`#${l.toLowerCase()}`} style={{ color: "rgba(10,10,10,0.5)", textDecoration: "none" }}>{l}</a>
+          ))}
         </nav>
-        <a href="#contact" style={{ border: "3px solid #0a0a0a", padding: "8px 20px", fontWeight: 900, fontSize: "12px", textDecoration: "none", color: "#0a0a0a", textTransform: "uppercase", letterSpacing: "0.1em" }}>Hire Us</a>
+
+        {/* Desktop CTA — hidden on mobile */}
+        <a href="#contact" className="hidden sm:inline-block" style={{ border: "3px solid #0a0a0a", padding: "8px 20px", fontWeight: 900, fontSize: "12px", textDecoration: "none", color: "#0a0a0a", textTransform: "uppercase", letterSpacing: "0.1em" }}>Hire Us</a>
+
+        {/* Mobile hamburger — hidden on desktop */}
+        <button
+          className="sm:hidden"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", flexDirection: "column", gap: "5px" }}
+        >
+          <span style={{ display: "block", width: "24px", height: "3px", background: "#0a0a0a", transition: "transform 0.2s", transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+          <span style={{ display: "block", width: "24px", height: "3px", background: "#0a0a0a", opacity: menuOpen ? 0 : 1, transition: "opacity 0.2s" }} />
+          <span style={{ display: "block", width: "24px", height: "3px", background: "#0a0a0a", transition: "transform 0.2s", transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+        </button>
       </div>
+
+      {/* Mobile dropdown — visible only when open, hidden on desktop */}
+      {menuOpen && (
+        <div className="sm:hidden" style={{ background: "#f5f0e8", borderTop: "3px solid #0a0a0a", borderBottom: "3px solid #0a0a0a", padding: "24px" }}>
+          <nav style={{ display: "flex", flexDirection: "column", gap: "20px", fontSize: "14px", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            {["Work", "Services", "Contact"].map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)} style={{ color: "#0a0a0a", textDecoration: "none" }}>{l}</a>
+            ))}
+            <a href="#contact" onClick={() => setMenuOpen(false)} style={{ display: "inline-block", border: "3px solid #0a0a0a", padding: "10px 20px", fontWeight: 900, fontSize: "12px", textDecoration: "none", color: "#0a0a0a", textTransform: "uppercase", letterSpacing: "0.1em", alignSelf: "flex-start" }}>Hire Us</a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -30,31 +140,29 @@ export default function BrutalPage() {
   const [form, setForm] = useState({ nama: "", email: "", pesan: "" });
   const [sent, setSent] = useState(false);
 
-  const b = (extra = {}) => ({
-    border: "3px solid #0a0a0a", ...extra
-  });
-
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
+      <style>{responsiveStyles}</style>
       <Nav />
 
       {/* ── HERO ── */}
       <section style={{ paddingTop: "80px", borderBottom: "3px solid #0a0a0a" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+
           {/* Top bar */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 0", borderBottom: "3px solid #0a0a0a" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px", padding: "20px 0", borderBottom: "3px solid #0a0a0a" }}>
             <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(10,10,10,0.4)" }}>Creative Agency · Est. 2018</span>
             <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(10,10,10,0.4)" }}>Jakarta, Indonesia</span>
           </div>
 
-          {/* Headline */}
-          <div style={{ padding: "48px 0", display: "grid", gridTemplateColumns: "2fr 1fr", gap: "0", borderBottom: "3px solid #0a0a0a" }}>
-            <div style={{ borderRight: "3px solid #0a0a0a", paddingRight: "40px" }}>
-              <h1 style={{ fontSize: "clamp(4rem,10vw,9rem)", fontWeight: 900, lineHeight: "0.9", letterSpacing: "-0.04em", margin: 0, fontFamily: "serif" }}>
+          {/* Headline — 1-col mobile, 2-col desktop */}
+          <div className="hero-grid" style={{ padding: "48px 0", borderBottom: "3px solid #0a0a0a" }}>
+            <div className="hero-left-col">
+              <h1 style={{ fontSize: "clamp(3.5rem,10vw,9rem)", fontWeight: 900, lineHeight: "0.9", letterSpacing: "-0.04em", margin: 0, fontFamily: "serif" }}>
                 WE<br />MAKE<br /><span style={{ color: "#f5f0e8", WebkitTextStroke: "3px #0a0a0a" }}>BOLD</span><br />SHIT.
               </h1>
             </div>
-            <div style={{ paddingLeft: "40px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div className="hero-right-col" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px" }}>
               <p style={{ fontSize: "16px", lineHeight: "1.6", color: "rgba(10,10,10,0.6)", margin: 0 }}>
                 We don&apos;t make safe design. We make design that gets <strong>remembered</strong>, that <strong>sells</strong>, that truly <strong>differentiates</strong> your business from the competition.
               </p>
@@ -86,17 +194,33 @@ export default function BrutalPage() {
       {/* ── WORK ── */}
       <section id="work" style={{ borderBottom: "3px solid #0a0a0a" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ padding: "48px 0 24px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderBottom: "3px solid #0a0a0a" }}>
+          <div style={{ padding: "48px 0 24px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "8px", borderBottom: "3px solid #0a0a0a" }}>
             <h2 style={{ fontSize: "clamp(2rem,5vw,4rem)", fontWeight: 900, fontFamily: "serif", margin: 0, letterSpacing: "-0.02em" }}>Selected Work</h2>
             <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(10,10,10,0.4)" }}>(2023–2025)</span>
           </div>
           {works.map((w, i) => (
-            <div key={w.no} onMouseEnter={() => setHoveredWork(i)} onMouseLeave={() => setHoveredWork(null)}
-              style={{ display: "grid", gridTemplateColumns: "80px 1fr 120px 120px", gap: "0", alignItems: "center", padding: "24px 0", borderBottom: "3px solid #0a0a0a", cursor: "pointer", background: hoveredWork === i ? "#0a0a0a" : "transparent", transition: "background 0.15s" }}>
-              <div style={{ fontSize: "12px", fontWeight: 900, color: hoveredWork === i ? "rgba(255,255,255,0.3)" : "rgba(10,10,10,0.3)", letterSpacing: "0.1em" }}>{w.no}</div>
-              <div style={{ fontSize: "clamp(1.2rem,3vw,2rem)", fontWeight: 900, fontFamily: "serif", color: hoveredWork === i ? "#f5f0e8" : "#0a0a0a", letterSpacing: "-0.02em" }}>{w.title}</div>
-              <div style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: hoveredWork === i ? "rgba(255,255,255,0.4)" : "rgba(10,10,10,0.35)" }}>{w.cat}</div>
-              <div style={{ fontSize: "13px", fontWeight: 700, textAlign: "right", color: hoveredWork === i ? "rgba(255,255,255,0.5)" : "rgba(10,10,10,0.3)" }}>{w.year} ↗</div>
+            <div key={w.no}
+              onMouseEnter={() => setHoveredWork(i)}
+              onMouseLeave={() => setHoveredWork(null)}
+              style={{ padding: "24px 0", borderBottom: "3px solid #0a0a0a", cursor: "pointer", background: hoveredWork === i ? "#0a0a0a" : "transparent", transition: "background 0.15s" }}>
+
+              {/* Mobile layout: stacked */}
+              <div className="flex sm:hidden" style={{ flexDirection: "column", gap: "6px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: "11px", fontWeight: 900, letterSpacing: "0.1em", color: hoveredWork === i ? "rgba(255,255,255,0.3)" : "rgba(10,10,10,0.3)" }}>{w.no}</span>
+                  <span style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: hoveredWork === i ? "rgba(255,255,255,0.4)" : "rgba(10,10,10,0.35)" }}>{w.cat}</span>
+                </div>
+                <div style={{ fontSize: "clamp(1.1rem,5vw,1.4rem)", fontWeight: 900, fontFamily: "serif", letterSpacing: "-0.02em", color: hoveredWork === i ? "#f5f0e8" : "#0a0a0a" }}>{w.title}</div>
+                <div style={{ fontSize: "12px", fontWeight: 700, color: hoveredWork === i ? "rgba(255,255,255,0.5)" : "rgba(10,10,10,0.3)" }}>{w.year} ↗</div>
+              </div>
+
+              {/* Desktop layout: fixed-column grid */}
+              <div className="hidden sm:grid" style={{ gridTemplateColumns: "80px 1fr 120px 120px", gap: "0", alignItems: "center" }}>
+                <div style={{ fontSize: "12px", fontWeight: 900, letterSpacing: "0.1em", color: hoveredWork === i ? "rgba(255,255,255,0.3)" : "rgba(10,10,10,0.3)" }}>{w.no}</div>
+                <div style={{ fontSize: "clamp(1.2rem,3vw,2rem)", fontWeight: 900, fontFamily: "serif", letterSpacing: "-0.02em", color: hoveredWork === i ? "#f5f0e8" : "#0a0a0a" }}>{w.title}</div>
+                <div style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: hoveredWork === i ? "rgba(255,255,255,0.4)" : "rgba(10,10,10,0.35)" }}>{w.cat}</div>
+                <div style={{ fontSize: "13px", fontWeight: 700, textAlign: "right", color: hoveredWork === i ? "rgba(255,255,255,0.5)" : "rgba(10,10,10,0.3)" }}>{w.year} ↗</div>
+              </div>
             </div>
           ))}
         </div>
@@ -106,14 +230,14 @@ export default function BrutalPage() {
       <section id="services" style={{ borderBottom: "3px solid #0a0a0a" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
           <h2 style={{ fontSize: "clamp(2rem,5vw,4rem)", fontWeight: 900, fontFamily: "serif", padding: "48px 0 32px", margin: 0, borderBottom: "3px solid #0a0a0a", letterSpacing: "-0.02em" }}>What We Do</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "none" }}>
+          <div className="svc-grid">
             {[
               { no: "01", t: "Branding", d: "Logo, visual identity, brand systems that make your business impossible to ignore." },
               { no: "02", t: "Web Design", d: "No templates — websites that truly reflect the DNA of your business." },
               { no: "03", t: "Digital Ads", d: "Ads people actually *want* to see, not skip. Performance-driven, always." },
               { no: "04", t: "Strategy", d: "Brand and digital strategy consulting for sustainable, long-term growth." },
             ].map((s, i) => (
-              <div key={s.no} style={{ padding: "32px 24px", borderRight: i % 2 === 0 ? "3px solid #0a0a0a" : "none", borderBottom: i < 2 ? "3px solid #0a0a0a" : "none" }}>
+              <div key={s.no} className={`svc-item${i % 2 === 0 ? " svc-item-even" : ""}${i >= 2 ? " svc-item-last-row" : ""}`}>
                 <div style={{ fontSize: "11px", fontWeight: 900, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(10,10,10,0.3)", marginBottom: "12px" }}>{s.no}</div>
                 <h3 style={{ fontSize: "28px", fontWeight: 900, fontFamily: "serif", margin: "0 0 12px", letterSpacing: "-0.02em" }}>{s.t}</h3>
                 <p style={{ fontSize: "14px", lineHeight: "1.6", color: "rgba(10,10,10,0.5)", margin: 0 }}>{s.d}</p>
@@ -136,8 +260,9 @@ export default function BrutalPage() {
       {/* ── CONTACT ── */}
       <section id="contact" style={{ borderTop: "3px solid #0a0a0a" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "3px solid #0a0a0a" }}>
-            <div style={{ padding: "48px 40px 48px 0", borderRight: "3px solid #0a0a0a" }}>
+          <div className="contact-grid">
+            {/* Left col: info */}
+            <div className="contact-left">
               <h2 style={{ fontSize: "clamp(2rem,4vw,3.5rem)", fontWeight: 900, fontFamily: "serif", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Let&apos;s make<br />something raw.</h2>
               <p style={{ fontSize: "15px", lineHeight: "1.6", color: "rgba(10,10,10,0.5)", margin: "0 0 32px" }}>Response within 24 hours. Free consultation. No bullshit.</p>
               {[{ l: "Email", v: "hello@rawagency.id" }, { l: "WA", v: "+62 812-3456-7890" }, { l: "Office", v: "Jl. Jaksa No.10, Jakarta Pusat" }].map(item => (
@@ -147,7 +272,9 @@ export default function BrutalPage() {
                 </div>
               ))}
             </div>
-            <div style={{ padding: "48px 0 48px 40px" }}>
+
+            {/* Right col: form */}
+            <div className="contact-right">
               {sent ? (
                 <div style={{ textAlign: "center", padding: "40px 0" }}>
                   <div style={{ fontSize: "48px", marginBottom: "16px" }}>✓</div>
@@ -161,13 +288,13 @@ export default function BrutalPage() {
                     <div key={f.n}>
                       <label style={{ display: "block", fontSize: "11px", fontWeight: 900, letterSpacing: "0.15em", marginBottom: "8px", color: "rgba(10,10,10,0.4)" }}>{f.l}</label>
                       <input required name={f.n} value={form[f.n]} onChange={e => setForm({ ...form, [f.n]: e.target.value })} placeholder={f.ph}
-                        style={{ width: "100%", borderBottom: "3px solid #0a0a0a", border: "none", borderBottom: "3px solid #0a0a0a", padding: "12px 0", fontSize: "15px", background: "transparent", outline: "none", fontWeight: 600, boxSizing: "border-box" }} />
+                        style={{ width: "100%", border: "none", borderBottom: "3px solid #0a0a0a", padding: "12px 0", fontSize: "15px", background: "transparent", outline: "none", fontWeight: 600, boxSizing: "border-box" }} />
                     </div>
                   ))}
                   <div>
                     <label style={{ display: "block", fontSize: "11px", fontWeight: 900, letterSpacing: "0.15em", marginBottom: "8px", color: "rgba(10,10,10,0.4)" }}>CERITAKAN PROJECT ANDA *</label>
                     <textarea required name="pesan" value={form.pesan} onChange={e => setForm({ ...form, pesan: e.target.value })} rows={4} placeholder="Industry, budget, timeline, problem you want solved..."
-                      style={{ width: "100%", borderBottom: "3px solid #0a0a0a", border: "none", borderBottom: "3px solid #0a0a0a", padding: "12px 0", fontSize: "14px", background: "transparent", outline: "none", resize: "none", boxSizing: "border-box", lineHeight: "1.6" }} />
+                      style={{ width: "100%", border: "none", borderBottom: "3px solid #0a0a0a", padding: "12px 0", fontSize: "14px", background: "transparent", outline: "none", resize: "none", boxSizing: "border-box", lineHeight: "1.6" }} />
                   </div>
                   <button type="submit"
                     style={{ background: "#0a0a0a", color: "#f5f0e8", padding: "18px", fontWeight: 900, fontSize: "14px", textTransform: "uppercase", letterSpacing: "0.1em", border: "none", cursor: "pointer" }}>
@@ -177,12 +304,14 @@ export default function BrutalPage() {
               )}
             </div>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0", fontSize: "12px", color: "rgba(10,10,10,0.3)", fontWeight: 700, letterSpacing: "0.05em" }}>
+
+          {/* Footer */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px", padding: "20px 0", fontSize: "12px", color: "rgba(10,10,10,0.3)", fontWeight: 700, letterSpacing: "0.05em" }}>
             <span>RAW AGENCY</span>
             <span>© 2024 · JAKARTA</span>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

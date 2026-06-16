@@ -17,6 +17,8 @@ export default function Layout({ children }) {
         .kl-d4 { transition-delay:.5s !important; }
         .kl-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity .8s ease; display:flex; align-items:flex-end; }
         .kl-slide.kl-active { opacity:1; }
+        .kl-offset-top { margin-top:0; }
+        @media (min-width:640px){ .kl-offset-top { margin-top:48px; } }
       `}</style>
       {children}
     </>

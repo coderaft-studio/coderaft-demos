@@ -16,9 +16,9 @@ export default function Galeri() {
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Galeri <span className="text-rose-500">Pernikahan</span></h2>
           <p className="text-slate-500 max-w-xl mx-auto">Setiap momen diabadikan dengan penuh cinta</p>
         </div>
-        <div className="grid grid-cols-4 gap-4 auto-rows-48">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-48">
           {photos.map(p => (
-            <div key={p.alt} className={`relative rounded-2xl overflow-hidden group ${p.span}`} style={{ height: p.span.includes("row-span-2") ? "390px" : "185px" }}>
+            <div key={p.alt} className={`relative rounded-2xl overflow-hidden group lg:${p.span}`} style={{ height: "220px" }}>
               <Image src={p.src} alt={p.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
             </div>

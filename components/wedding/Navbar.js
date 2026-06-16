@@ -30,12 +30,10 @@ export default function Navbar() {
           </div>
         </button>
       </div>
-      {open && (
-        <nav className="md:hidden bg-white border-t px-6 py-4 flex flex-col gap-4">
-          {links.map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-slate-700 hover:text-rose-500 font-medium">{l.label}</a>)}
-          <a href="#kontak" className="bg-rose-500 text-white px-5 py-2 rounded-full text-center font-bold">Konsultasi Gratis</a>
-        </nav>
-      )}
+      <nav className={`md:hidden bg-white border-t px-6 py-4 flex-col gap-4 ${open ? "flex" : "hidden"}`}>
+        {links.map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-slate-700 hover:text-rose-500 font-medium">{l.label}</a>)}
+        <a href="#kontak" className="bg-rose-500 text-white px-5 py-2 rounded-full text-center font-bold">Konsultasi Gratis</a>
+      </nav>
     </header>
   );
 }

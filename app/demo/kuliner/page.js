@@ -56,9 +56,9 @@ function Navbar() {
       </nav>
 
       {/* Hero */}
-      <section id="beranda" style={{ minHeight:"100vh", backgroundImage:"url(/demo/kuliner/hero.jpg)", backgroundSize:"cover", backgroundPosition:"center", backgroundAttachment:"fixed", display:"flex", alignItems:"center", justifyContent:"center", position:"relative" }}>
+      <section id="beranda" className="kl-hero-bg" style={{ minHeight:"100vh", backgroundImage:"url(/demo/kuliner/hero.jpg)", backgroundSize:"cover", backgroundPosition:"center", display:"flex", alignItems:"center", justifyContent:"center", position:"relative" }}>
         <div style={{ position:"absolute", inset:0, background:"rgba(24,20,14,0.62)" }}/>
-        <div style={{ position:"relative", zIndex:1, textAlign:"center", padding:"0 24px" }} className="kl-wow kl-fadeIn">
+        <div style={{ position:"relative", zIndex:1, textAlign:"center", padding:"0 24px", willChange:"transform" }} className="kl-wow kl-fadeIn">
           <p style={{ fontFamily:"'Satisfy',cursive", fontSize:"22px", color:G, marginBottom:"14px" }}>Selamat Datang di</p>
           <h1 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(48px,8vw,100px)", fontWeight:300, letterSpacing:"0.05em", lineHeight:1.1, color:"#f5efe4", marginBottom:"20px" }}>
             Bumbu <em style={{ color:G, fontStyle:"italic" }}>Nusantara</em>
@@ -76,11 +76,14 @@ function Navbar() {
             </a>
           </div>
         </div>
-        <div style={{ position:"absolute", bottom:"28px", left:"50%", transform:"translateX(-50%)", display:"flex", flexDirection:"column", alignItems:"center", gap:"6px", animation:"bounce2 2s infinite" }}>
+        <div style={{ position:"absolute", bottom:"28px", left:"50%", transform:"translateX(-50%)", display:"flex", flexDirection:"column", alignItems:"center", gap:"6px", animation:"bounce2 2s infinite", willChange:"transform" }}>
           <span style={{ fontSize:"9px", letterSpacing:"0.2em", textTransform:"uppercase", color:"rgba(245,239,228,0.4)" }}>Gulir</span>
           <div style={{ width:"1px", height:"36px", background:"linear-gradient(to bottom, rgba(201,168,76,0.8), transparent)" }}/>
         </div>
-        <style>{`@keyframes bounce2{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}`}</style>
+        <style>{`
+          @keyframes bounce2{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+          @media (min-width:768px){ .kl-hero-bg{ background-attachment:fixed; } }
+        `}</style>
       </section>
 
       <KulinerContent/>
@@ -90,5 +93,5 @@ function Navbar() {
 
 export default function KulinerPage() {
   useAnimateOnScroll(".kl-wow", "kl-animated");
-  return <Navbar/>;
+  return <div style={{ overflowX:"hidden" }}><Navbar/></div>;
 }

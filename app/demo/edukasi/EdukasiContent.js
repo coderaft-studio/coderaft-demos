@@ -268,14 +268,14 @@ export default function EdukasiContent() {
           </p>
           {/* 2 rows × 4 columns */}
           <div style={{ display:"flex", flexDirection:"column", gap:"16px" }}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {SCREEN.slice(0,4).map((s,i)=>(
                 <div key={i} className={`ed-wow ed-flipInY ed-d${i+1}`}>
                   <ScreenCard s={s} i={i}/>
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {SCREEN.slice(4,8).map((s,i)=>(
                 <div key={i+4} className={`ed-wow ed-flipInY ed-d${i+1}`}>
                   <ScreenCard s={s} i={i+4}/>
@@ -330,18 +330,17 @@ export default function EdukasiContent() {
             Mulai gratis, upgrade kapan saja. Tanpa kontrak, tanpa biaya tersembunyi.
           </p>
 
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"24px", alignItems:"start" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ alignItems:"start" }}>
             {PAKET.map((p,i)=>{
               const isF = p.unggulan;
               const ICONS = ["🎯","🚀","💎"];
               return (
-                <div key={p.nama} className={`ed-wow ed-flipInY ed-d${i+1}`}
+                <div key={p.nama} className={`ed-wow ed-flipInY ed-d${i+1}${isF ? " sm:-translate-y-3" : ""}`}
                   style={{ position:"relative", borderRadius:"20px", overflow:"hidden",
                     background: isF ? "linear-gradient(145deg,#0d2f45,#0a1e32)" : "rgba(255,255,255,0.03)",
                     border: isF ? "1px solid rgba(81,255,182,0.4)" : "1px solid rgba(255,255,255,0.07)",
                     boxShadow: isF ? "0 0 80px rgba(81,255,182,0.1), inset 0 1px 0 rgba(81,255,182,0.2)" : "none",
                     padding:"0",
-                    transform: isF ? "translateY(-12px)" : "none",
                   }}>
 
                   {/* Gradient top bar */}

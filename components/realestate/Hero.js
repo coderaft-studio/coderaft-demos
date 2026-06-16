@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 to-slate-950/40" />
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
         <p className="text-amber-400 tracking-widest uppercase text-sm font-semibold mb-4">Premium Real Estate</p>
-        <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-2xl">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-2xl">
           Temukan Rumah <span className="text-amber-400">Impian</span> Anda
         </h1>
         <p className="text-white/70 text-lg mb-10 max-w-xl">Ratusan pilihan properti premium di lokasi strategis. Beli, jual, atau sewa dengan bantuan agen terpercaya kami.</p>
@@ -25,7 +25,7 @@ export default function Hero() {
           </select>
           <a href="#listing" className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-6 py-3 rounded-xl font-bold text-sm transition-colors whitespace-nowrap">🔍 Cari</a>
         </div>
-        <div className="mt-10 flex gap-8 text-white">
+        <div className="mt-10 flex flex-wrap gap-6 text-white">
           {[{ num: "1.200+", label: "Properti Tersedia" }, { num: "850+", label: "Klien Puas" }, { num: "10+", label: "Tahun Pengalaman" }].map(s => (
             <div key={s.label}><div className="text-2xl font-bold text-amber-400">{s.num}</div><div className="text-white/60 text-xs mt-1">{s.label}</div></div>
           ))}

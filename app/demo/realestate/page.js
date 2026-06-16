@@ -6,5 +6,5 @@ import Kontak from "@/components/realestate/Kontak";
 import Footer from "@/components/realestate/Footer";
 
 export default function RealEstatePage() {
-  return <main><Navbar /><Hero /><Listing /><Agen /><Kontak /><Footer /></main>;
+  return <main className="overflow-x-hidden"><Navbar /><Hero /><Listing /><Agen /><Kontak /><Footer /></main>;
 }

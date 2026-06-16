@@ -9,7 +9,7 @@ export default function Kontak() {
 
   return (
     <section id="kontak" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
           <p className="text-rose-500 font-semibold tracking-widest uppercase text-sm mb-3">Hubungi Kami</p>
           <h2 className="text-4xl font-bold text-slate-800 mb-6">Mulai <span className="text-rose-500">Perjalanan Anda</span></h2>
@@ -38,7 +38,7 @@ export default function Kontak() {
           ) : (
             <form onSubmit={submit} className="space-y-4">
               <h3 className="text-xl font-bold text-slate-800 mb-2">Form Konsultasi</h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[{ name: "nama", label: "Nama Calon Pengantin *", placeholder: "Budi & Rini" }, { name: "wa", label: "No. WhatsApp *", placeholder: "0821XXXXXXXX" }].map(f => (
                   <div key={f.name}>
                     <label className="block text-xs font-medium text-slate-500 mb-1">{f.label}</label>
@@ -47,7 +47,7 @@ export default function Kontak() {
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-slate-500 mb-1">Tanggal Pernikahan</label>
                   <input type="date" name="tanggal" value={form.tanggal} onChange={handle}

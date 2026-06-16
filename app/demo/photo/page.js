@@ -52,7 +52,7 @@ export default function PhotoPage() {
   const filtered = activeKat === "Semua" ? portofolio : portofolio.filter(p => p.cat === activeKat);
 
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Nav />
 
       {/* Hero — full screen dark cinematic */}
@@ -65,7 +65,7 @@ export default function PhotoPage() {
             Every Frame<br />Tells a <span style={{ color: "#d4a853", fontStyle: "italic" }}>Story.</span>
           </h1>
           <p className="text-lg mb-10 max-w-lg" style={{ color: "rgba(253,248,243,0.5)" }}>Kami merekam momen-momen berharga menjadi karya visual yang abadi. Dari wedding hingga editorial, setiap detail terabadikan dengan sempurna.</p>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-4">
             <a href="#porto" className="px-8 py-4 font-bold text-sm transition-all" style={{ background: "#d4a853", color: "#0a0906" }}>Lihat Portfolio</a>
             <a href="#kontak" className="px-8 py-4 font-semibold text-sm transition-all" style={{ border: "1px solid rgba(253,248,243,0.2)", color: "rgba(253,248,243,0.8)" }}>Book Session</a>
           </div>
@@ -75,12 +75,12 @@ export default function PhotoPage() {
       {/* Portfolio */}
       <section id="porto" className="py-24" style={{ background: "#0a0906" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
             <div>
               <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#d4a853", letterSpacing: "0.2em" }}>PORTFOLIO</p>
               <h2 className="font-black text-4xl" style={{ color: "#fdf8f3" }}>Karya <span style={{ color: "#d4a853" }}>Terpilih</span></h2>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {cats.map(c => (
                 <button key={c} onClick={() => setActiveKat(c)}
                   className="px-4 py-2 text-xs font-semibold transition-all"
@@ -90,7 +90,7 @@ export default function PhotoPage() {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {filtered.map((p, i) => (
               <div key={i} className="relative rounded-lg overflow-hidden group aspect-square">
                 <Image src={p.src} alt={p.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -212,6 +212,6 @@ export default function PhotoPage() {
           <p className="text-xs" style={{ color: "rgba(253,248,243,0.2)" }}>© 2024 Lumina Studio. All rights reserved.</p>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

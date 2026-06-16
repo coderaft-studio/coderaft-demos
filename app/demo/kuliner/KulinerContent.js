@@ -42,7 +42,7 @@ function useSlider(count, interval=4500) {
 }
 
 const secStyle = { padding:"80px 0" };
-const wrap = { maxWidth:"1200px", margin:"0 auto", padding:"0 48px" };
+const wrap = { maxWidth:"1200px", margin:"0 auto", padding:"0 24px" };
 const secHead = (title) => (
   <div className="kl-wow" style={{ marginBottom:"48px" }}>
     <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(32px,4vw,52px)", fontWeight:300, letterSpacing:"0.03em", marginBottom:"20px" }}>{title}</h2>
@@ -101,9 +101,9 @@ export default function KulinerContent() {
 
           <div style={{ display:"flex", flexDirection:"column", gap:"48px" }}>
             {[MENU_ITEMS.slice(0,4), MENU_ITEMS.slice(4,8)].map((row, ri)=>(
-              <div key={ri} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div key={ri} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {row.map((item,i)=>(
-                  <div key={item.nama} className="kl-wow" style={{ transitionDelay:`${i*0.12}s`, marginTop:item.offsetTop?"48px":"0" }}>
+                  <div key={item.nama} className={`kl-wow${item.offsetTop?" kl-offset-top":""}`} style={{ transitionDelay:`${i*0.12}s` }}>
                     <div style={{ overflow:"hidden", marginBottom:"16px" }}>
                       <Image unoptimized src={item.img} alt={item.nama} width={400} height={300}
                         style={{ width:"100%", aspectRatio:"4/3", objectFit:"cover", transition:"transform .5s ease" }}
@@ -232,7 +232,7 @@ export default function KulinerContent() {
       </section>
 
       {/* ── CTA RESERVASI ── */}
-      <section id="reservasi" style={{ position:"relative", backgroundImage:"url(/demo/kuliner/cta.jpg)", backgroundSize:"cover", backgroundPosition:"center", backgroundAttachment:"fixed", padding:"100px 0", textAlign:"center", color:CREAM }}>
+      <section id="reservasi" className="kl-hero-bg" style={{ position:"relative", backgroundImage:"url(/demo/kuliner/cta.jpg)", backgroundSize:"cover", backgroundPosition:"center", padding:"100px 0", textAlign:"center", color:CREAM }}>
         <div style={{ position:"absolute", inset:0, background:"rgba(24,20,14,0.78)" }}/>
         <div style={{ position:"relative", zIndex:1, maxWidth:"600px", margin:"0 auto", padding:"0 24px" }} className="kl-wow kl-fadeIn">
           <p style={{ fontFamily:"'Satisfy',cursive", fontSize:"20px", color:G, marginBottom:"14px" }}>Bergabunglah Bersama Kami</p>
@@ -252,7 +252,7 @@ export default function KulinerContent() {
 
       {/* ── FOOTER ── */}
       <footer style={{ background:DARK, padding:"60px 0 40px", color:CREAM }}>
-        <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 48px" }}>
+        <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 24px" }}>
           <div className="grid md:grid-cols-4 gap-8" style={{ marginBottom:"40px" }}>
             <div>
               <h4 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"24px", fontWeight:400, color:G, marginBottom:"12px", letterSpacing:"0.08em" }}>Bumbu<span style={{ color:CREAM }}>.</span>Nusantara</h4>

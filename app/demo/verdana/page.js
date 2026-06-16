@@ -32,6 +32,7 @@ export default function VerdanaPage() {
   const [form, setForm] = useState({ nama: "", wa: "", produk: "", catatan: "" });
   const [sent, setSent] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div style={{ background: CREAM, color: DARK, minHeight: "100vh", fontFamily: "'Georgia', serif", overflowX: "hidden" }}>
@@ -53,10 +54,49 @@ export default function VerdanaPage() {
               <a key={l} href={`#${l.toLowerCase()}`} className="text-xs uppercase" style={{ color: DARK, textDecoration: "none", letterSpacing: "0.15em", fontFamily: "sans-serif", fontWeight: 700 }}>{l}</a>
             ))}
           </div>
-          <a href="#pesan" className="text-xs uppercase px-5 py-2.5 font-bold" style={{ background: GREEN, color: CREAM, textDecoration: "none", letterSpacing: "0.12em", fontFamily: "sans-serif" }}>
-            Pesan Sekarang
-          </a>
+          <div className="flex items-center gap-3">
+            {/* Hamburger — mobile only */}
+            <button
+              className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5"
+              onClick={() => setMenuOpen(o => !o)}
+              aria-label="Toggle menu"
+              style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            >
+              <span style={{ display: "block", width: "22px", height: "2px", background: GREEN, transition: "transform 0.2s", transform: menuOpen ? "translateY(6px) rotate(45deg)" : "none" }} />
+              <span style={{ display: "block", width: "22px", height: "2px", background: GREEN, opacity: menuOpen ? 0 : 1, transition: "opacity 0.15s" }} />
+              <span style={{ display: "block", width: "22px", height: "2px", background: GREEN, transition: "transform 0.2s", transform: menuOpen ? "translateY(-6px) rotate(-45deg)" : "none" }} />
+            </button>
+            <a href="#pesan" className="hidden md:inline-block text-xs uppercase px-5 py-2.5 font-bold" style={{ background: GREEN, color: CREAM, textDecoration: "none", letterSpacing: "0.12em", fontFamily: "sans-serif" }}>
+              Pesan Sekarang
+            </a>
+          </div>
         </div>
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="md:hidden" style={{ borderTop: `1px solid rgba(45,90,39,0.12)`, background: CREAM }}>
+            {["Produk", "Proses", "FAQ", "Pesan"].map(l => (
+              <a
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="block px-6 py-4 text-xs uppercase font-bold"
+                style={{ color: DARK, textDecoration: "none", letterSpacing: "0.15em", fontFamily: "sans-serif", borderBottom: `1px solid rgba(45,90,39,0.07)` }}
+              >
+                {l}
+              </a>
+            ))}
+            <div className="px-6 py-4">
+              <a
+                href="#pesan"
+                onClick={() => setMenuOpen(false)}
+                className="block text-center text-xs uppercase px-5 py-3 font-bold"
+                style={{ background: GREEN, color: CREAM, textDecoration: "none", letterSpacing: "0.12em", fontFamily: "sans-serif" }}
+              >
+                Pesan Sekarang
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}

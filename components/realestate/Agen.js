@@ -12,7 +12,7 @@ export default function Agen() {
           <h2 className="text-4xl font-bold text-white mb-4">Agen <span className="text-amber-400">Terpercaya</span></h2>
           <p className="text-slate-400 max-w-xl mx-auto">Agen berpengalaman siap membantu Anda menemukan properti yang tepat</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {agen.map(a => (
             <div key={a.nama} className="bg-slate-900 rounded-2xl p-8 text-center border border-slate-800 hover:border-amber-500/30 transition-all group">
               <div className={`${a.color} w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-5`}>{a.avatar}</div>

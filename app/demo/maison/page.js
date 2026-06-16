@@ -40,20 +40,20 @@ export default function MaisonPage() {
       {/* Navbar */}
       <nav style={{ borderBottom: `1px solid rgba(212,175,55,0.15)` }}>
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="text-xs uppercase tracking-widest" style={{ color: MUTED, letterSpacing: "0.25em" }}>Collection</div>
-          <div className="text-center">
+          <div className="hidden sm:block text-xs uppercase tracking-widest" style={{ color: MUTED, letterSpacing: "0.25em" }}>Collection</div>
+          <div className="text-center mx-auto sm:mx-0">
             <div style={{ fontFamily: "Georgia, serif", fontSize: "1.6rem", letterSpacing: "0.25em", color: CREAM }}>MAISON</div>
             <div className="text-xs" style={{ color: GOLD, letterSpacing: "0.5em", marginTop: "-2px" }}>◆ NOIR ◆</div>
           </div>
-          <a href="#enquiry" className="text-xs uppercase tracking-widest" style={{ color: GOLD, textDecoration: "none", letterSpacing: "0.25em" }}>Enquire</a>
+          <a href="#enquiry" className="hidden sm:block text-xs uppercase tracking-widest" style={{ color: GOLD, textDecoration: "none", letterSpacing: "0.25em" }}>Enquire</a>
         </div>
       </nav>
 
       {/* Hero */}
-      <section style={{ minHeight: "92vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "80px 24px", position: "relative" }}>
+      <section style={{ minHeight: "92vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "60px 20px", position: "relative", overflow: "hidden" }}>
         {/* Art Deco corner ornaments */}
-        {[{ t: 0, l: 0, tr: "none" }, { t: 0, r: 0, tr: "scaleX(-1)" }, { b: 0, l: 0, tr: "scaleY(-1)" }, { b: 0, r: 0, tr: "scale(-1)" }].map((pos, i) => (
-          <div key={i} style={{ position: "absolute", width: 60, height: 60, ...pos, borderTop: i < 2 ? `1px solid ${GOLD}` : "none", borderBottom: i >= 2 ? `1px solid ${GOLD}` : "none", borderLeft: i % 2 === 0 ? `1px solid ${GOLD}` : "none", borderRight: i % 2 === 1 ? `1px solid ${GOLD}` : "none" }} />
+        {[{ top: 0, left: 0 }, { top: 0, right: 0 }, { bottom: 0, left: 0 }, { bottom: 0, right: 0 }].map((pos, i) => (
+          <div key={i} style={{ position: "absolute", width: 40, height: 40, ...pos, borderTop: i < 2 ? `1px solid ${GOLD}` : "none", borderBottom: i >= 2 ? `1px solid ${GOLD}` : "none", borderLeft: i % 2 === 0 ? `1px solid ${GOLD}` : "none", borderRight: i % 2 === 1 ? `1px solid ${GOLD}` : "none" }} />
         ))}
 
         <div style={{ maxWidth: "640px" }}>
@@ -74,7 +74,7 @@ export default function MaisonPage() {
           <div className="my-8">
             <ArtDecoLine />
             <p className="py-6 text-sm leading-loose" style={{ color: MUTED, letterSpacing: "0.08em", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-              "Luxury is not a surface. It is the residue of time, care,<br />and the refusal to compromise."
+              "Luxury is not a surface. It is the residue of time, care, and the refusal to compromise."
             </p>
             <ArtDecoLine />
           </div>
@@ -93,9 +93,9 @@ export default function MaisonPage() {
             <p className="text-xs uppercase tracking-widest mb-4" style={{ color: GOLD, letterSpacing: "0.35em" }}>Our Philosophy</p>
             <h2 style={{ fontFamily: "Georgia, serif", fontSize: "clamp(1.8rem,5vw,3rem)", letterSpacing: "0.12em", fontWeight: 400 }}>The Three Pillars</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-0" style={{ border: `1px solid rgba(212,175,55,0.2)` }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0" style={{ border: `1px solid rgba(212,175,55,0.2)` }}>
             {values.map((v, i) => (
-              <div key={v.roman} className="p-8 text-center" style={{ borderRight: i < 2 ? `1px solid rgba(212,175,55,0.2)` : "none" }}>
+              <div key={v.roman} className={`p-8 text-center${i < 2 ? " border-b md:border-b-0 md:border-r" : ""}`} style={{ borderColor: "rgba(212,175,55,0.2)" }}>
                 <div className="mb-4" style={{ fontFamily: "Georgia, serif", fontSize: "2rem", color: GOLD }}>{v.roman}</div>
                 <ArtDecoLine />
                 <h3 className="mt-4 mb-3 text-sm uppercase tracking-widest" style={{ letterSpacing: "0.25em", color: CREAM }}>{v.title}</h3>
@@ -118,7 +118,7 @@ export default function MaisonPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: `rgba(212,175,55,0.15)` }}>
             {products.map(p => (
-              <div key={p.name} className="p-10 group" style={{ background: DARK }}>
+              <div key={p.name} className="p-6 sm:p-10 group" style={{ background: DARK }}>
                 {/* Art deco product icon */}
                 <div className="mb-6 flex items-center gap-4">
                   <div style={{ width: "40px", height: "40px", border: `1px solid ${GOLD}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
