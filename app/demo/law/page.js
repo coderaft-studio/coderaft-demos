@@ -27,14 +27,14 @@ function Nav() {
       style={{ background: sc ? "rgba(255,255,255,0.97)" : "transparent", backdropFilter: sc ? "blur(12px)" : "none", boxShadow: sc ? "0 1px 20px rgba(15,23,42,0.08)" : "none", borderBottom: sc ? "1px solid rgba(15,23,42,0.06)" : "none" }}>
       <div className="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between py-4">
         <div>
-          <div className="font-black text-xl tracking-tight" style={{ color: "#0f172a", letterSpacing: "0.05em" }}>NUSANTARA <span style={{ color: "#b45309" }}>LAW</span></div>
-          <div className="text-xs" style={{ color: "rgba(15,23,42,0.4)", letterSpacing: "0.15em" }}>ADVOCATES & LEGAL CONSULTANTS</div>
+          <div className="font-black text-xl tracking-tight" style={{ color: sc ? "#0f172a" : "#fff", letterSpacing: "0.05em" }}>NUSANTARA <span style={{ color: "#b45309" }}>LAW</span></div>
+          <div className="text-xs" style={{ color: sc ? "rgba(15,23,42,0.4)" : "rgba(255,255,255,0.4)", letterSpacing: "0.15em" }}>ADVOCATES & LEGAL CONSULTANTS</div>
         </div>
         <nav className="hidden md:flex items-center gap-8">
-          {links.map(l => <a key={l.href} href={l.href} className="text-sm font-medium transition-colors hover:text-amber-700" style={{ color: "rgba(15,23,42,0.6)" }}>{l.label}</a>)}
-          <a href="#kontak" className="px-6 py-2.5 text-sm font-bold transition-all" style={{ background: "#0f172a", color: "#fff", borderRadius: "4px" }}>Konsultasi Gratis</a>
+          {links.map(l => <a key={l.href} href={l.href} className="text-sm font-medium transition-colors hover:text-amber-700" style={{ color: sc ? "rgba(15,23,42,0.6)" : "rgba(255,255,255,0.7)" }}>{l.label}</a>)}
+          <a href="#kontak" className="px-6 py-2.5 text-sm font-bold transition-all" style={{ background: sc ? "#0f172a" : "#b45309", color: "#fff", borderRadius: "4px" }}>Konsultasi Gratis</a>
         </nav>
-        <button onClick={() => setOp(!op)} className="md:hidden p-2" style={{ color: "#0f172a" }}>☰</button>
+        <button onClick={() => setOp(!op)} className="md:hidden p-2" style={{ color: sc ? "#0f172a" : "#fff" }}>☰</button>
       </div>
       {op && <nav style={{ background: "rgba(255,255,255,0.98)", borderTop: "1px solid rgba(15,23,42,0.08)" }} className="md:hidden px-6 py-4 flex flex-col gap-4">
         {links.map(l => <a key={l.href} href={l.href} onClick={() => setOp(false)} className="font-medium" style={{ color: "#0f172a" }}>{l.label}</a>)}
