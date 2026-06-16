@@ -84,7 +84,7 @@ function Navbar() {
                 </a>
               </div>
             </div>
-            <div style={{ textAlign:"center" }} className="ed-wow ed-flipInY ed-d2">
+            <div style={{ textAlign:"center" }} className="ed-wow ed-flipInY ed-d2 hidden md:block">
               <Image unoptimized src="/demo/edukasi/feature_main.jpg" alt="BelajarKu App" width={420} height={520}
                 priority
                 style={{ width:"100%", maxWidth:"400px", height:"auto", borderRadius:"16px", boxShadow:"0 20px 60px rgba(81,255,182,0.15)" }}/>
