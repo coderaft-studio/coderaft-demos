@@ -4,7 +4,7 @@ export default function Hero() {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <Image src="/demo/wedding/hero.jpg" alt="Wedding" fill priority className="object-cover" />
       <div className="absolute inset-0 bg-black/45" />
-      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pt-16">
         <p className="text-rose-300 tracking-widest uppercase text-sm font-semibold mb-4">Premium Wedding Organizer</p>
         <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
           Wujudkan<br /><span className="text-rose-300">Pernikahan Impian</span><br />Anda
