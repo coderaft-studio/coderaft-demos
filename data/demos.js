@@ -60,12 +60,12 @@ export const demos = [
     tags: ["Properti", "Real Estate", "Listing"],
   },
   {
-    id: 4, slug: "fintrack", title: "FinTrack Studio", lang: "id",
-    cat: "Dashboard", subcat: "Finance & Accounting",
-    desc: "Dashboard keuangan lengkap: pemasukan, pengeluaran, budget kategori, laporan bulanan dengan chart interaktif.",
+    id: 6, slug: "eduadmin", title: "CoderaftEdu", lang: "id",
+    cat: "Dashboard", subcat: "School & LMS",
+    desc: "Dashboard manajemen sekolah: data siswa CRUD, manajemen kelas, input nilai, dan absensi real-time.",
     stack: ["Next.js", "Tailwind CSS", "React State"],
-    color: "from-emerald-500 to-green-700", emoji: "💰",
-    tags: ["Finance", "Keuangan", "Analytics"],
+    color: "from-violet-500 to-purple-700", emoji: "🎓",
+    tags: ["Sekolah", "Siswa", "Akademik"],
   },
   {
     id: 5, slug: "taskflow", title: "Coderaft TaskFlow", lang: "id",
@@ -78,12 +78,12 @@ export const demos = [
 
   // ── Halaman 2 (10–18) ──
   {
-    id: 6, slug: "eduadmin", title: "CoderaftEdu", lang: "id",
-    cat: "Dashboard", subcat: "School & LMS",
-    desc: "Dashboard manajemen sekolah: data siswa CRUD, manajemen kelas, input nilai, dan absensi real-time.",
+    id: 4, slug: "fintrack", title: "FinTrack Studio", lang: "id",
+    cat: "Dashboard", subcat: "Finance & Accounting",
+    desc: "Dashboard keuangan lengkap: pemasukan, pengeluaran, budget kategori, laporan bulanan dengan chart interaktif.",
     stack: ["Next.js", "Tailwind CSS", "React State"],
-    color: "from-violet-500 to-purple-700", emoji: "🎓",
-    tags: ["Sekolah", "Siswa", "Akademik"],
+    color: "from-emerald-500 to-green-700", emoji: "💰",
+    tags: ["Finance", "Keuangan", "Analytics"],
   },
   {
     id: 27, slug: "nexaboard-ext", url: "https://board.coderaft.web.id",
