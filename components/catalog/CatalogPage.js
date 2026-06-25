@@ -138,15 +138,15 @@ export default function CatalogPage() {
       {/* ── Cards Grid — RESPONSIVE ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
         {paginated.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-10">
+          <div className="catalog-grid grid grid-cols-3 gap-2 sm:gap-5 mb-10">
             {paginated.map((d) => {
               const cs = catStyle[d.cat];
               return (
                 <Link key={d.id} href={d.url || `/demo/${d.slug}`} target="_blank" rel="noopener noreferrer"
                   style={{ textDecoration: "none", display: "block" }}
-                  className="group">
+                  className="group h-full">
                   <div
-                    className="rounded-2xl overflow-hidden transition-all"
+                    className="rounded-2xl overflow-hidden transition-all flex flex-col h-full relative"
                     style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
                     onMouseEnter={e => {
                       e.currentTarget.style.transform = "translateY(-4px)";
@@ -160,19 +160,19 @@ export default function CatalogPage() {
                     }}>
 
                     {/* Card header */}
-                    <div className={`bg-gradient-to-br ${d.color} relative flex items-center justify-center`}
+                    <div className={`catalog-card-header bg-gradient-to-br ${d.color} relative flex items-center justify-center`}
                       style={{ height: "150px" }}>
                       <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.22)" }} />
-                      <span className="group-hover:scale-110 transition-transform duration-300"
+                      <span className="catalog-card-emoji group-hover:scale-110 transition-transform duration-300"
                         style={{ fontSize: "52px", position: "relative", zIndex: 1, filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.4))" }}>
                         {d.emoji}
                       </span>
                       {/* Language badge */}
-                      <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 2, fontSize: "16px" }}>
+                      <div className="catalog-card-badge-lang" style={{ position: "absolute", top: "10px", left: "10px", zIndex: 2, fontSize: "16px" }}>
                         {d.lang === "en" ? "🇺🇸" : "🇮🇩"}
                       </div>
                       {/* Cat badge */}
-                      <div style={{ position: "absolute", top: "10px", right: "10px", zIndex: 2 }}>
+                      <div className="catalog-card-badge-cat" style={{ position: "absolute", top: "10px", right: "10px", zIndex: 2 }}>
                         <span style={{ fontSize: "10px", fontWeight: 700, padding: "3px 9px", borderRadius: "100px", background: cs.bg, color: cs.text, border: `1px solid ${cs.border}`, backdropFilter: "blur(8px)" }}>
                           {d.cat}
                         </span>
@@ -182,14 +182,14 @@ export default function CatalogPage() {
                     </div>
 
                     {/* Card body */}
-                    <div style={{ padding: "16px 18px 18px" }}>
-                      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", color: "#8b5cf6", marginBottom: "4px", textTransform: "uppercase" }}>
+                    <div className="catalog-card-body" style={{ padding: "16px 18px 18px" }}>
+                      <p className="catalog-card-subcat" style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", color: "#8b5cf6", marginBottom: "4px", textTransform: "uppercase" }}>
                         {d.subcat}
                       </p>
-                      <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#f0f4ff", margin: "0 0 7px", letterSpacing: "-0.02em" }}>
+                      <h3 className="catalog-card-title" style={{ fontSize: "16px", fontWeight: 800, color: "#f0f4ff", margin: "0 0 7px", letterSpacing: "-0.02em" }}>
                         {d.title}
                       </h3>
-                      <p style={{ fontSize: "12px", color: "rgba(240,244,255,0.4)", lineHeight: "1.6", margin: "0 0 12px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                      <p className="catalog-card-desc" style={{ fontSize: "12px", color: "rgba(240,244,255,0.4)", lineHeight: "1.6", margin: "0 0 12px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                         {d.desc}
                       </p>
                       {/* Tags — hidden on small to save space */}
@@ -201,10 +201,10 @@ export default function CatalogPage() {
                         ))}
                       </div>
                       {/* CTA */}
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "10px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#8b5cf6" }}>Buka Demo</span>
-                        <div style={{ width: "28px", height: "28px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", fontSize: "13px" }}
-                          className="group-hover:bg-violet-600 group-hover:border-violet-600 group-hover:text-white transition-all">
+                      <div className="catalog-card-cta-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "10px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                        <span className="catalog-card-cta-text" style={{ fontSize: "12px", fontWeight: 700, color: "#8b5cf6" }}>Buka Demo</span>
+                        <div className="catalog-card-cta-btn group-hover:bg-violet-600 group-hover:border-violet-600 group-hover:text-white transition-all"
+                          style={{ width: "28px", height: "28px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", fontSize: "13px" }}>
                           ↗
                         </div>
                       </div>
@@ -228,29 +228,58 @@ export default function CatalogPage() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 flex-wrap">
+          <div className="flex justify-center mb-2">
+          <div className="flex items-center gap-1.5 sm:gap-2"
+            style={{ padding: "6px", background: "rgba(255,255,255,0.03)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.06)" }}>
+
+            {/* Prev */}
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-              className="px-4 py-2 rounded-xl text-sm font-bold transition-all"
-              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", color: page === 1 ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.6)", cursor: page === 1 ? "not-allowed" : "pointer" }}>
-              ← Prev
+              className="flex items-center justify-center rounded-xl font-bold transition-all"
+              style={{
+                height: "34px", padding: "0 10px", fontSize: "13px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                color: page === 1 ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.65)",
+                cursor: page === 1 ? "not-allowed" : "pointer",
+                gap: "4px",
+              }}>
+              <span style={{ fontSize: "15px", lineHeight: 1 }}>‹</span>
+              <span className="hidden sm:inline" style={{ fontSize: "12px" }}>Prev</span>
             </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
-              <button key={n} onClick={() => setPage(n)}
-                className="w-9 h-9 rounded-xl text-sm font-bold transition-all"
-                style={{
-                  border: "none", cursor: "pointer",
-                  background: n === page ? "linear-gradient(135deg,#8b5cf6,#6d28d9)" : "rgba(255,255,255,0.04)",
-                  color: n === page ? "#fff" : "rgba(240,244,255,0.4)",
-                  boxShadow: n === page ? "0 0 16px rgba(139,92,246,0.4)" : "none",
-                }}>
-                {n}
-              </button>
-            ))}
+
+            {/* Page numbers */}
+            <div className="flex items-center gap-1 sm:gap-1.5">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
+                <button key={n} onClick={() => setPage(n)}
+                  className="flex items-center justify-center rounded-xl font-bold transition-all"
+                  style={{
+                    width: "34px", height: "34px", fontSize: "13px",
+                    cursor: "pointer", border: "none",
+                    background: n === page ? "linear-gradient(135deg,#8b5cf6,#6d28d9)" : "rgba(255,255,255,0.04)",
+                    color: n === page ? "#fff" : "rgba(240,244,255,0.4)",
+                    boxShadow: n === page ? "0 0 18px rgba(139,92,246,0.45)" : "none",
+                    transform: n === page ? "scale(1.08)" : "scale(1)",
+                  }}>
+                  {n}
+                </button>
+              ))}
+            </div>
+
+            {/* Next */}
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
-              className="px-4 py-2 rounded-xl text-sm font-bold transition-all"
-              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", color: page === totalPages ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.6)", cursor: page === totalPages ? "not-allowed" : "pointer" }}>
-              Next →
+              className="flex items-center justify-center rounded-xl font-bold transition-all"
+              style={{
+                height: "34px", padding: "0 10px", fontSize: "13px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                color: page === totalPages ? "rgba(240,244,255,0.2)" : "rgba(240,244,255,0.65)",
+                cursor: page === totalPages ? "not-allowed" : "pointer",
+                gap: "4px",
+              }}>
+              <span className="hidden sm:inline" style={{ fontSize: "12px" }}>Next</span>
+              <span style={{ fontSize: "15px", lineHeight: 1 }}>›</span>
             </button>
+          </div>
           </div>
         )}
 

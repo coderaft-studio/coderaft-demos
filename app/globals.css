@@ -1,3 +1,49 @@
 @import "tailwindcss";
 html { scroll-behavior: smooth; }
 body { font-family: Arial, sans-serif; }
+
+/* ── Catalog card: compact 3-col mobile layout (≤767px) ── */
+@media (max-width: 767px) {
+  .catalog-grid { grid-auto-rows: 158px; }
+
+  /* Header */
+  .catalog-card-header { height: 90px !important; }
+  .catalog-card-emoji  { font-size: 32px !important; }
+
+  /* Badges */
+  .catalog-card-badge-lang { top: 6px !important; left: 6px !important; font-size: 13px !important; }
+  .catalog-card-badge-cat  { top: 6px !important; bottom: auto !important; right: 6px !important; }
+  .catalog-card-badge-cat span { font-size: 8px !important; padding: 2px 5px !important; }
+
+  /* Body: flex column, compact */
+  .catalog-card-body {
+    padding: 8px 9px 9px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+  }
+
+  /* Sembunyikan subcat & desc */
+  .catalog-card-subcat { display: none !important; }
+  .catalog-card-desc   { display: none !important; }
+
+  /* Title: 2 baris max */
+  .catalog-card-title {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.02em !important;
+    flex: 1 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* CTA */
+  .catalog-card-cta-row  { padding-top: 4px !important; margin-top: auto !important; }
+  .catalog-card-cta-text { display: none !important; }
+  .catalog-card-cta-btn  { width: 20px !important; height: 20px !important; border-radius: 5px !important; font-size: 9px !important; }
+}
+
